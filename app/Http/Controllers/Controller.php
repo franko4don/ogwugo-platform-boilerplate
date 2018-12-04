@@ -15,7 +15,7 @@ class Controller extends BaseController
         $carbon = Carbon::now();
         $info = [
             "status" => 'success',
-            "response" => self::$HTTP_OK,
+            "status_code" => self::$HTTP_OK,
             'message' => 'Current Time',
             "data" => [
                 'currentTime' => $carbon->format('l, jS F Y'),
@@ -38,7 +38,7 @@ class Controller extends BaseController
         $error_message = is_null($errors) ? 'not specified' : $errors;
         $info = [
             "status" => 'failed',
-            "response" => self::$HTTP_NOT_FOUND,
+            "status_code" => self::$HTTP_NOT_FOUND,
             'message' => $message,
             'errors' => $error_message,
         ];
@@ -58,7 +58,7 @@ class Controller extends BaseController
         
         $info = [
             "status" => 'failed',
-            "response" => self::$HTTP_UNPROCESSABLE_ENTITY,
+            "status_code" => self::$HTTP_UNPROCESSABLE_ENTITY,
             'message' => $message,
             'errors' => $errors,
         ];
@@ -74,7 +74,7 @@ class Controller extends BaseController
     private static function unauthorized($message){
         $info = [
             "status" => 'failed',
-            "response" => self::$HTTP_UNAUTHORIZED,
+            "status_code" => self::$HTTP_UNAUTHORIZED,
             'message' => $message,
             'errors' => [$message]
         ];
@@ -90,7 +90,7 @@ class Controller extends BaseController
     private static function dataCreationFailed($message){
         $info = [
             "status" => 'failed',
-            "response" => self::$HTTP_BAD_REQUEST,
+            "status_code" => self::$HTTP_BAD_REQUEST,
             'message' => $message,
             'errors' => [$message]
         ];
@@ -106,7 +106,7 @@ class Controller extends BaseController
     private static function actionSuccess($message){
         $info = [
             "status" => 'success',
-            "response" => self::$HTTP_OK,
+            "status_code" => self::$HTTP_OK,
             'message' => $message,
         ];
         return Response::json($info,self::$HTTP_OK);
@@ -121,7 +121,7 @@ class Controller extends BaseController
     public static function actionFailure($message){
         $info = [
             "status" => 'failed',
-            "response" => self::$HTTP_CONFLICT,
+            "status_code" => self::$HTTP_CONFLICT,
             'message' => $message,
         ];
         return Response::json($info,self::$HTTP_CONFLICT);
@@ -136,7 +136,7 @@ class Controller extends BaseController
     public static function forbidden($message){
         $info = [
             "status" => 'failed',
-            "response" => self::$HTTP_FORBIDDEN,
+            "status_code" => self::$HTTP_FORBIDDEN,
             'message' => $message,
         ];
         return Response::json($info,self::$HTTP_FORBIDDEN);

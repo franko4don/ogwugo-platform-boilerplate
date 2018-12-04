@@ -4,10 +4,12 @@ namespace App\Api\V1\Controllers;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tymon\JWTAuth\JWTAuth;
+use Tymon\JWTAuth\JWTFactory;
 use App\Http\Controllers\Controller;
 use App\Api\V1\Requests\LoginRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\Model\V1\User;
 use Auth;
 
 class LoginController extends Controller
@@ -25,7 +27,7 @@ class LoginController extends Controller
 
         try {
             $token = Auth::guard()->attempt($credentials);
-
+             
             if(!$token) {
                 throw new AccessDeniedHttpException();
             }
@@ -41,4 +43,6 @@ class LoginController extends Controller
                 'expires_in' => Auth::guard()->factory()->getTTL() * 60
             ]);
     }
+
+    
 }
