@@ -7,14 +7,14 @@ $api = app(Router::class);
 
 $api->version('v1', function (Router $api) {
     $api->group(['prefix' => 'v1/auth'], function(Router $api) {
-        $api->post('signup', 'App\\Api\\V1\\Controllers\\Auth\\SignUpController@signUp');
-        $api->post('login', 'App\\Api\\V1\\Controllers\\Auth\\LoginController@login');
+        $api->post('signup', 'App\\Api\\V1\\Controllers\\Authy\\SignUpController@signUp');
+        $api->post('login', 'App\\Api\\V1\\Controllers\\Authy\\LoginController@login');
 
-        $api->post('recovery', 'App\\Api\\V1\\Controllers\\Auth\\ForgotPasswordController@sendResetEmail');
-        $api->post('reset', 'App\\Api\\V1\\Controllers\\Auth\\ResetPasswordController@resetPassword');
+        $api->post('recovery', 'App\\Api\\V1\\Controllers\\Authy\\ForgotPasswordController@sendResetEmail');
+        $api->post('reset', 'App\\Api\\V1\\Controllers\\Authy\\ResetPasswordController@resetPassword');
 
-        $api->post('logout', 'App\\Api\\V1\\Controllers\\Auth\\LogoutController@logout');
-        $api->post('refresh', 'App\\Api\\V1\\Controllers\\Auth\\RefreshController@refresh');
+        $api->post('logout', 'App\\Api\\V1\\Controllers\\Authy\\LogoutController@logout');
+        $api->post('refresh', 'App\\Api\\V1\\Controllers\\Authy\\RefreshController@refresh');
         $api->get('me', 'App\\Api\\V1\\Controllers\\UserController@me');
     });
 

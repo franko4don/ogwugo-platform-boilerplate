@@ -38,21 +38,8 @@ class User extends Authenticatable implements JWTSubject
             if (!$user->password) {
                 $user->password = '.';
             }
-            $user->hashPassword();
             $user->verification_code = Helper::generateCode();
         });
-    }
-
-    public function hashPassword($password = null)
-    {
-        if ($password) {
-            return Hash::make($password);
-        }
-        else if ($this->password) {
-            $this->password = Hash::make($this->password);
-        }
-        
-        return $this;
     }
 
     /**

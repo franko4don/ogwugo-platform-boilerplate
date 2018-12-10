@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Controllers\Auth;
+namespace App\Api\V1\Controllers\Authy;
 
 use Config;
 use App\User;
