@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Controllers;
+namespace App\Api\V1\Controllers\Auth;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tymon\JWTAuth\JWTAuth;
@@ -14,7 +14,14 @@ class LoginController extends Controller
 {
     /**
      * Log the user in
-     *
+     * @group Auth
+     * @bodyParam email string required The email of user.
+     * @bodyParam password string required The password of user.
+     * @response{
+     *  "status": "ok",
+     *  "token": "fdsvgdrufsversdubfvgydrsfhewjrdvsfvsetdvbfwredsfvywehrdvsyveasdgrgcwasjgvdwwsd",
+     *  "expires_in": 345653
+     * }
      * @param LoginRequest $request
      * @param JWTAuth $JWTAuth
      * @return \Illuminate\Http\JsonResponse

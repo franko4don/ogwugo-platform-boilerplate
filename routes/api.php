@@ -6,15 +6,15 @@ use Dingo\Api\Routing\Router;
 $api = app(Router::class);
 
 $api->version('v1', function (Router $api) {
-    $api->group(['prefix' => 'auth'], function(Router $api) {
-        $api->post('signup', 'App\\Api\\V1\\Controllers\\SignUpController@signUp');
-        $api->post('login', 'App\\Api\\V1\\Controllers\\LoginController@login');
+    $api->group(['prefix' => 'v1/auth'], function(Router $api) {
+        $api->post('signup', 'App\\Api\\V1\\Controllers\\Auth\\SignUpController@signUp');
+        $api->post('login', 'App\\Api\\V1\\Controllers\\Auth\\LoginController@login');
 
-        $api->post('recovery', 'App\\Api\\V1\\Controllers\\ForgotPasswordController@sendResetEmail');
-        $api->post('reset', 'App\\Api\\V1\\Controllers\\ResetPasswordController@resetPassword');
+        $api->post('recovery', 'App\\Api\\V1\\Controllers\\Auth\\ForgotPasswordController@sendResetEmail');
+        $api->post('reset', 'App\\Api\\V1\\Controllers\\Auth\\ResetPasswordController@resetPassword');
 
-        $api->post('logout', 'App\\Api\\V1\\Controllers\\LogoutController@logout');
-        $api->post('refresh', 'App\\Api\\V1\\Controllers\\RefreshController@refresh');
+        $api->post('logout', 'App\\Api\\V1\\Controllers\\Auth\\LogoutController@logout');
+        $api->post('refresh', 'App\\Api\\V1\\Controllers\\Auth\\RefreshController@refresh');
         $api->get('me', 'App\\Api\\V1\\Controllers\\UserController@me');
     });
 

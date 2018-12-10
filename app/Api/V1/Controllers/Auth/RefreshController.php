@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Controllers;
+namespace App\Api\V1\Controllers\Auth;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tymon\JWTAuth\JWTAuth;
@@ -14,7 +14,7 @@ class RefreshController extends Controller
 {
     /**
      * Refresh a token.
-     *
+     * @group Auth
      * @return \Illuminate\Http\JsonResponse
      */
     public function refresh()

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Controllers;
+namespace App\Api\V1\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Auth;
@@ -19,7 +19,7 @@ class LogoutController extends Controller
 
     /**
      * Log the user out (Invalidate the token)
-     *
+     * @group Auth
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout()

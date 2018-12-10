@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Controllers;
+namespace App\Api\V1\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -10,7 +10,11 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ForgotPasswordController extends Controller
-{
+{   
+    /**
+     * send reset password email
+     * @group Auth
+     */
     public function sendResetEmail(ForgotPasswordRequest $request)
     {
         $user = User::where('email', '=', $request->get('email'))->first();

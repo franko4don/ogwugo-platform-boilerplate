@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\V1\Controllers;
+namespace App\Api\V1\Controllers\Auth;
 
 use Config;
 use App\User;
@@ -12,6 +12,10 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ResetPasswordController extends Controller
 {
+    /**
+     * Resets user password
+     * @group Auth
+     */
     public function resetPassword(ResetPasswordRequest $request, JWTAuth $JWTAuth)
     {
         $response = $this->broker()->reset(

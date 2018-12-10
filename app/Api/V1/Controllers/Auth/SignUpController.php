@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Api\V1\Controllers;
+namespace App\Api\V1\Controllers\Auth;
 
 use Config;
-use App\User;
+use App\Model\V1\User;
 use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
 use App\Api\V1\Requests\SignUpRequest;
@@ -11,6 +11,20 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SignUpController extends Controller
 {
+    /**
+     * Creates a user in the database
+     * @group Auth
+     * @bodyParam firstname string required The firstname of user.
+     * @bodyParam lastname string required The lastname of user.
+     * @bodyParam email string The email of user.
+     * @bodyParam password string The password of user
+     * @response{
+     *  "status": "ok",
+     *  "token": "fdsvgdrufsversdubfvgydrsfhewjrdvsfvsetdvbfwredsfvywehrdvsyveasdgrgcwasjgvdwwsd",
+     *  "expires_in": 345653
+     * }
+     * 
+    */
     public function signUp(SignUpRequest $request, JWTAuth $JWTAuth)
     {
         $user = new User($request->all());
@@ -27,7 +41,8 @@ class SignUpController extends Controller
         $token = $JWTAuth->fromUser($user);
         return response()->json([
             'status' => 'ok',
-            'token' => $token
+            'token' => $token,
+            'expires_in' => Auth::guard()->factory()->getTTL() * 60
         ], 201);
     }
 }
