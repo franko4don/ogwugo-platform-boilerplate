@@ -6,6 +6,7 @@ use Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Helpers\Helper;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname', 'email', 'password', 'lastname'
     ];
 
     /**
@@ -28,6 +29,31 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function ($user) {
+            if (!$user->password) {
+                $user->password = '.';
+            }
+            $user->hashPassword();
+            $user->verification_code = Helper::generateCode();
+        });
+    }
+
+    public function hashPassword($password = null)
+    {
+        if ($password) {
+            return Hash::make($password);
+        }
+        else if ($this->password) {
+            $this->password = Hash::make($this->password);
+        }
+        
+        return $this;
+    }
 
     /**
      * Automatically creates hash for the user password.

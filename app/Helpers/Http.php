@@ -1,21 +1,18 @@
 <?php
-namespace App\Http\Helpers;
+namespace App\Helpers\Http;
 
-use \GuzzleHttp\Client;
-use Exception;
+use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\RequestException;
+use Exception;
 
-/*
-|--------------------------------------------------------------------------
-| Custom Http Client
-|--------------------------------------------------------------------------
-|
-| A customized Http Client Class that enables user make api calls to 
-| remote urls from within an app using Guzzle
-|
-*/
-
+/**
+ * @method mixed post($url, $_ = null)
+ * @method mixed get($url, $_ = null)
+ * @method mixed patch($url, $_ = null)
+ * @method mixed post($url, $_ = null)
+ * @method mixed put($url, $_ = null)
+ */
 class Http
 {
 
@@ -24,72 +21,63 @@ class Http
 
     public static function client()
     {
-        if (!self::$client)
-        self::$client = new Client;
+        if (!self::$client) self::$client = new Client;
         return self::$client;
     }
 
-    /**
-     * Processes response returned by guzzle
-     * @param mixed $response
-     * @param boolean $toArray
-     */
-    private static function processResponse(ResponseInterface $response, $toArray = true)
+    public static function processJsonResponse(ResponseInterface $response, $toArray = true)
     {
-        return json_decode(self::$response->getBody(), $toArray);
+        return json_decode(strval($response->getBody()), $toArray);
     }
 
-    /**
-    * Sends a get request to defined url
-    * @param string $url 
-    * @param array $params
-    * @return mixed
-    */
-   public static function get($url = '', $params = [], $responseToArray = true)
-   {
-        self::$response = self::client()->request('GET', $url, $params);
-        
-        return self::processResponse(self::$response, $responseToArray);
-    }
-
-   /**
-    * Sends a post request to defined url
-    * @param string $url 
-    * @param array $params
-    * @return mixed
-    */
-   public static function post($url = '', $params = [], $responseToArray = true)
-   {
-       self::$response = self::client()->request('POST', $url, $params);
-       return self::processResponse(self::$response, $responseToArray);
-   }
-
-   
-
-    /**
-    * Sends a delete request to defined url
-    * @param string $url 
-    * @param array $params
-    * @return mixed
-    */
-    public static function delete($url = '', $params = [], $responseToArray = true)
+    private static function req($method, array $args)
     {
-        self::$response = self::client()->request('DELETE', $url, $params);
-        return self::processResponse(self::$response, $responseToArray);
+        array_unshift($args, $method);
+        return call_user_func_array([get_called_class(), 'request'], $args);
     }
 
-    /**
-     * Sends a put request to defined url
-    * @param string $method
-    * @param string $url 
-    * @param array $params
-    * @return mixed
-    */
-    public static function put($url = '', $params = [], $responseToArray = true)
+    public static function request($method, $url, $_ = null)
     {
-        self::$response = self::client()->request('PUT', $url, $params);
-        return self::processResponse(self::$response, $responseToArray);
+        $args = func_get_args();
+        array_shift($args);
+        $args[1]['http_errors'] = false;
+
+        self::$response = call_user_func_array([static::client(), $method], $args);
+
+        return static::processJsonResponse(self::$response);
+    }
+    
+    public static function requestAsync($method, $url, $_ = null) {
+        $args = func_get_args();
+        array_shift($args);
+        $args[1]['http_errors'] = false;
+        return call_user_func_array([static::client(), $method . 'Async'], $args);
     }
 
+    public static function hasErrors() {
+        return static::getStatusCode() >= 400;
+    }
+
+    public static function getStatusCode() {
+        return self::$response ? self::$response->getStatusCode() : 0;
+    }
+
+    public static function rawResponse() {
+        return self::$response;
+    }
+
+    public static function response() {
+        return static::processJsonResponse(self::$response);
+    }
+
+    public static function respond()
+    {
+        return response()->json(static::response(), static::getStatusCode());
+    }
+
+    public static function __callStatic($method, $args)
+    {
+        return static::req($method, $args);
+    }
 
 }

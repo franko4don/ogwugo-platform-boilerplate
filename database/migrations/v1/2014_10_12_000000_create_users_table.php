@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('verification_code')->nullable();
             $table->string('reactivation_code')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->boolean('is_verified')->default(false);
+            $table->boolean('is_verified')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
