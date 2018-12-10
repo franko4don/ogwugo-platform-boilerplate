@@ -28,6 +28,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request, JWTAuth $JWTAuth)
     {
+        // dd(request()->getHttpHost());
         $credentials = $request->only(['email', 'password']);
         
         try {
@@ -38,8 +39,10 @@ class LoginController extends Controller
                 
                 throw new AccessDeniedHttpException();
             }
-
+            // $user = Auth::guard()->setToken($token)->getUser();
+            
         } catch (JWTException $e) {
+          
             throw new HttpException(500);
         }
 

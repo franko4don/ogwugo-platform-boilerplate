@@ -11,7 +11,7 @@ class Helper
     public static function generateCode(){
             $first = "";
             $second = "";
-            $multiplier = 6;
+            $multiplier = 12;
             $alpha = "ABCDEFGHIJKLMNOPQRSTUPWXYZabcdefghijklmanopqrstuvwxyz0123456789";
             
             for($i = 0; $i < $multiplier; $i++){

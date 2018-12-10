@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppsTable extends Migration
+class CreateFeaturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateAppsTable extends Migration
      */
     public function up()
     {
-        Schema::create('apps', function (Blueprint $table) {
+        Schema::create('features', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('api_url');
             $table->string('name');
-            $table->string('uuid')->unique();
-            $table->string('secret')->unique();
-            $table->string('test_secret')->unique();
-            $table->string('app_domain')->nullable();
+            $table->integer('app_id')->unsigned();
             $table->boolean('is_active')->default(false);
-            $table->softDeletes();
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
+            $table->integer('activated_by')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateAppsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apps');
+        Schema::dropIfExists('features');
     }
 }

@@ -57,10 +57,11 @@ class Controller extends BaseController
     private static function validationFailed($message, $errors){
         
         $info = [
-            "status" => 'failed',
-            "response" => self::$HTTP_UNPROCESSABLE_ENTITY,
-            'message' => $message,
-            'errors' => $errors,
+            'error' => [
+                    'errors' => $errors, 
+                    'status_code' => self::$HTTP_UNPROCESSABLE_ENTITY, 
+                    'message' => $message
+                    ]
         ];
         return Response::json($info,self::$HTTP_UNPROCESSABLE_ENTITY);
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppsTable extends Migration
+class CreateAppOrganizationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateAppsTable extends Migration
      */
     public function up()
     {
-        Schema::create('apps', function (Blueprint $table) {
+        Schema::create('app_organization', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('api_url');
-            $table->string('name');
-            $table->string('uuid')->unique();
-            $table->string('secret')->unique();
-            $table->string('test_secret')->unique();
-            $table->string('app_domain')->nullable();
+            $table->integer('app_id')->unsigned();
+            $table->integer('organization_id')->unsigned();
+            $table->integer('subscription_id')->unsigned()->nullable();
+            $table->string('custom_subdomain');
             $table->boolean('is_active')->default(false);
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateAppsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apps');
+        Schema::dropIfExists('app_organization');
     }
 }
