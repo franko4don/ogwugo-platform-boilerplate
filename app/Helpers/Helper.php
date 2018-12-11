@@ -46,6 +46,12 @@ class Helper
         return $enum;
     }
 
+    /**
+     * Writes content of a json file to a new php file in array format
+     * @param string $filepath
+     * @param string $outputpath
+     * @param string $node
+     */
     public function writeJsonToFileAsArray($filepath, $outputpath, $node = 'countries'){
         $raw = file_get_contents($filepath);
         $result = json_decode($raw,true);
@@ -59,6 +65,11 @@ class Helper
 
     }
 
+    /**
+     * Prepares the array to be in string format while maintaining array format
+     * @param array $array
+     * @return string $result
+     */
     public function arrayToString($array){
         $result = '[';
         foreach($array as $key => $value){
