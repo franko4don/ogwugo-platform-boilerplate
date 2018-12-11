@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAddressOrganizationTable extends Migration
+class CreateOrganizationUserPasswordResets extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateAddressOrganizationTable extends Migration
      */
     public function up()
     {
-        Schema::create('address_organization', function (Blueprint $table) {
+        Schema::create('organization_user_password_resets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('organization_id')->unsigned();
-            $table->integer('state_id')->unsigned();
-            $table->integer('country_id')->unsigned();
-            $table->string('city');
-            $table->string('address');
+            $table->string('email');
+            $table->text('token');
+            $table->integer('organization_id');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateAddressOrganizationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address_organization');
+        Schema::dropIfExists('organization_user_password_resets');
     }
 }
