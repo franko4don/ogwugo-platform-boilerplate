@@ -45,4 +45,32 @@ class Helper
         }
         return $enum;
     }
+
+    public function writeJsonToFileAsArray($filepath, $outputpath, $node = 'countries'){
+        $raw = file_get_contents($filepath);
+        $result = json_decode($raw,true);
+        $prepared = "<?php \nreturn [ \n\t\t";
+        foreach($result[$node] as $key => $value){
+            $prepared.=$this->arrayToString($value)." , \n\t\t";
+        }
+        $prepared = trim($prepared, ', ');
+        $prepared.= '];';
+        file_put_contents($outputpath, $prepared);
+
+    }
+
+    public function arrayToString($array){
+        $result = '[';
+        foreach($array as $key => $value){
+            $key = $key == 'phoneCode' ? 'd_code' : $key;
+            $key = $key == 'sortname' ? 'sort_name' : $key;
+            $value = is_numeric($value) ? (int)$value : "\"$value\"";
+            $result.="'$key' => $value , ";
+        }
+        $result = trim($result, ', ');
+        $result.=']';
+        return $result;
+    }
+
+
 }

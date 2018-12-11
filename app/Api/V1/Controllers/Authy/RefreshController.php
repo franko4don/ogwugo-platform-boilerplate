@@ -15,6 +15,11 @@ class RefreshController extends Controller
     /**
      * Refresh a token.
      * @group Auth
+     * @response{
+     *  "status": "ok",
+     *  "token": "fdsvgdrufsversdubfvgydrsfhewjsyveasdgrgcwasjgvdwwsd",
+     *  "expires_in": 345653
+     * }
      * @return \Illuminate\Http\JsonResponse
      */
     public function refresh()

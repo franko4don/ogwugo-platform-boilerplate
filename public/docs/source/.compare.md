@@ -27,10 +27,10 @@ Welcome to the generated API reference.
 > Example request:
 
 ```bash
-curl -X POST "http://localhost/api/v1/auth/signup"     -d "firstname"="xlSPvWWsVpGbsdFL" \
-    -d "lastname"="dSn1gei023G2a2ch" \
-    -d "email"="z9MQf2XDvSbmphg0" \
-    -d "password"="0VcZAWmDa80THoFh" 
+curl -X POST "http://localhost/api/v1/auth/signup"     -d "firstname"="ZlOGpGdIWoLiUDdp" \
+    -d "lastname"="OcsVEJgbpjhRe2Nb" \
+    -d "email"="VZ0u9QcT7YmmX4nb" \
+    -d "password"="f58OkOXpNP6KtFUC" 
 ```
 
 ```javascript
@@ -42,10 +42,10 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "firstname": "xlSPvWWsVpGbsdFL",
-    "lastname": "dSn1gei023G2a2ch",
-    "email": "z9MQf2XDvSbmphg0",
-    "password": "0VcZAWmDa80THoFh",
+    "firstname": "ZlOGpGdIWoLiUDdp",
+    "lastname": "OcsVEJgbpjhRe2Nb",
+    "email": "VZ0u9QcT7YmmX4nb",
+    "password": "f58OkOXpNP6KtFUC",
 })
 
 fetch(url, {
@@ -87,8 +87,8 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost/api/v1/auth/login"     -d "email"="gtojHlPSGHnzb93H" \
-    -d "password"="Uei5BBPppvCzHkdB" 
+curl -X POST "http://localhost/api/v1/auth/login"     -d "email"="QFesiJpAIRi7oxJX" \
+    -d "password"="vzcqNdB4zyw9Y9jl" 
 ```
 
 ```javascript
@@ -100,8 +100,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "email": "gtojHlPSGHnzb93H",
-    "password": "Uei5BBPppvCzHkdB",
+    "email": "QFesiJpAIRi7oxJX",
+    "password": "vzcqNdB4zyw9Y9jl",
 })
 
 fetch(url, {
@@ -256,6 +256,15 @@ fetch(url, {
     .then(json => console.log(json));
 ```
 
+> Example response (200):
+
+```json
+{
+    "status": "ok",
+    "token": "fdsvgdrufsversdubfvgydrsfhewjsyveasdgrgcwasjgvdwwsd",
+    "expires_in": 345653
+}
+```
 
 ### HTTP Request
 `POST /api/v1/auth/refresh`

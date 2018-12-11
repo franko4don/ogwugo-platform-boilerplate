@@ -54,10 +54,10 @@
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/signup"     -d "firstname"="xlSPvWWsVpGbsdFL" \
-    -d "lastname"="dSn1gei023G2a2ch" \
-    -d "email"="z9MQf2XDvSbmphg0" \
-    -d "password"="0VcZAWmDa80THoFh" </code></pre>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/signup"     -d "firstname"="ZlOGpGdIWoLiUDdp" \
+    -d "lastname"="OcsVEJgbpjhRe2Nb" \
+    -d "email"="VZ0u9QcT7YmmX4nb" \
+    -d "password"="f58OkOXpNP6KtFUC" </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/signup");
 
 let headers = {
@@ -66,10 +66,10 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "firstname": "xlSPvWWsVpGbsdFL",
-    "lastname": "dSn1gei023G2a2ch",
-    "email": "z9MQf2XDvSbmphg0",
-    "password": "0VcZAWmDa80THoFh",
+    "firstname": "ZlOGpGdIWoLiUDdp",
+    "lastname": "OcsVEJgbpjhRe2Nb",
+    "email": "VZ0u9QcT7YmmX4nb",
+    "password": "f58OkOXpNP6KtFUC",
 })
 
 fetch(url, {
@@ -132,8 +132,8 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/login"     -d "email"="gtojHlPSGHnzb93H" \
-    -d "password"="Uei5BBPppvCzHkdB" </code></pre>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/login"     -d "email"="QFesiJpAIRi7oxJX" \
+    -d "password"="vzcqNdB4zyw9Y9jl" </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/login");
 
 let headers = {
@@ -142,8 +142,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "email": "gtojHlPSGHnzb93H",
-    "password": "Uei5BBPppvCzHkdB",
+    "email": "QFesiJpAIRi7oxJX",
+    "password": "vzcqNdB4zyw9Y9jl",
 })
 
 fetch(url, {
@@ -274,6 +274,14 @@ fetch(url, {
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "ok",
+    "token": "fdsvgdrufsversdubfvgydrsfhewjsyveasdgrgcwasjgvdwwsd",
+    "expires_in": 345653
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST /api/v1/auth/refresh</code></p>
 <!-- END_b591815eb7298ac67431a28c5c83b415 -->
