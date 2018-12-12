@@ -83,5 +83,96 @@ class Helper
         return $result;
     }
 
+    /**
+     * Creates nginx config file with a defined template
+     * @param string $outputpath
+     * @param string $filename
+     * @param array $server_names
+     * @return boolean
+     */
+    public static function createNginxConfig($outputpath, $filename, $server_names = []){
+
+        $path = __DIR__.'/../../nginx.conf'; // template configuration path
+        if(empty($filename) || file_exists($outputpath.$filename)){
+            return false;
+        }
+        try{
+            $raw = file_get_contents($path);
+            $concat = 'server_name ';
+
+            if(count($server_names) > 0){
+                foreach($server_names as $key => $value){
+                    $concat.=$value.' ,';
+                }
+                $concat = trim($concat, ' ,');
+                $concat.=';';
+                $processed = preg_replace('/server_name .+;/',$concat,$raw, 1);
+                file_put_contents($outputpath.$filename, $processed);
+                return file_exists($outputpath.$filename);
+            }else{
+                return false;
+            }
+        }catch(\Exception $e){
+
+            return false;
+
+        }
+        
+    } 
+    
+    /**
+     * Edits an already existing nginx config file and adds subdomain servernames
+     * @param string $path
+     * @param array $server_names
+     * @return boolean
+     */
+    public static function editNginxConfig($path, $server_names = [], $replace_all = false){
+        try{
+            $raw = file_get_contents($path);
+            $concat = 'server_name ';
+
+            // gets matched group
+            preg_match('/server_name (.+);/', $raw, $re);          
+            $concat = $replace_all ? $concat :  $concat.$re[1].', ';
+
+            // Gets all the found domains and puts them in an array
+            $checker = self::trimArrayValues(explode(',', $re[1]));
+            
+            if(count($server_names) > 0){
+                foreach($server_names as $key => $value){
+                    /**
+                     * if replace_all is false and the domain is contained
+                     * in the array it skips adding that domain
+                     */
+                    if(in_array(trim($value), $checker) && !$replace_all)continue;
+                    $concat.=$value.', ';
+                }
+                $concat = trim($concat, ', ');
+                $concat.=';';
+                $processed = preg_replace('/server_name .+;/',$concat,$raw, 1);
+                file_put_contents($path, $processed);
+                return file_exists($path);
+            }
+
+            return false;
+            
+        }catch(\Exception $e){
+            return false;
+        }
+    }
+
+
+    /**
+     * Trims all white spaces in array values
+     * @param array $array
+     * @return array
+     */
+    private static function trimArrayValues($array = []){
+        foreach($array as $key => $value){
+            $array[$key] = trim($value);
+        }
+        return $array;
+    }
+
 
 }
