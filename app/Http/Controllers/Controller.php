@@ -6,15 +6,29 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Response;
+use Carbon\Carbon;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+     //HTTP status codes
+     static $HTTP_NOT_FOUND = 404;
+     static $HTTP_OK = 200;
+     static $HTTP_UNPROCESSABLE_ENTITY = 422;
+     static $HTTP_UNAUTHORIZED = 401;
+     static $HTTP_BAD_REQUEST = 400;
+     static $HTTP_FORBIDDEN = 403;
+     static $HTTP_CONFLICT= 409;
+
+     static $FAILED = 'failed';
+     static $SUCCESS = 'success';
+     
     public static function currentTime(){
         $carbon = Carbon::now();
         $info = [
-            "status" => 'success',
+            "status" => self::$SUCCESS,
             "status_code" => self::$HTTP_OK,
             'message' => 'Current Time',
             "data" => [
@@ -34,13 +48,11 @@ class Controller extends BaseController
      * @param array $errors
      * @return json
      */
-    public function notFound($message, $errors = null){
-        $error_message = is_null($errors) ? 'not specified' : $errors;
+    public function notFound($message){
         $info = [
-            "status" => 'failed',
+            "status" => self::$FAILED,
             "status_code" => self::$HTTP_NOT_FOUND,
             'message' => $message,
-            'errors' => $error_message,
         ];
         return Response::json($info,self::$HTTP_NOT_FOUND);
     }
@@ -57,11 +69,11 @@ class Controller extends BaseController
     public function validationFailed($message, $errors){
         
         $info = [
-            'error' => [
-                    'errors' => $errors, 
-                    'status_code' => self::$HTTP_UNPROCESSABLE_ENTITY, 
-                    'message' => $message
-                    ]
+                'status' => self::$FAILED,
+                'errors' => $errors, 
+                'status_code' => self::$HTTP_UNPROCESSABLE_ENTITY, 
+                'message' => $message
+                
         ];
         return Response::json($info,self::$HTTP_UNPROCESSABLE_ENTITY);
     }
@@ -74,10 +86,9 @@ class Controller extends BaseController
      */
     public function unauthorized($message){
         $info = [
-            "status" => 'failed',
+            "status" => self::$FAILED,
             "status_code" => self::$HTTP_UNAUTHORIZED,
             'message' => $message,
-            'errors' => [$message]
         ];
         return Response::json($info,self::$HTTP_UNAUTHORIZED);
     }
@@ -90,10 +101,9 @@ class Controller extends BaseController
      */
     public function dataCreationFailed($message){
         $info = [
-            "status" => 'failed',
+            "status" => self::$FAILED,
             "status_code" => self::$HTTP_BAD_REQUEST,
             'message' => $message,
-            'errors' => [$message]
         ];
         return Response::json($info,self::$HTTP_BAD_REQUEST);
     }
@@ -106,9 +116,24 @@ class Controller extends BaseController
      */
     public function actionSuccess($message){
         $info = [
-            "status" => 'success',
+            "status" => self::$SUCCESS,
             "status_code" => self::$HTTP_OK,
             'message' => $message,
+        ];
+        return Response::json($info,self::$HTTP_OK);
+    }
+
+    /**
+     *
+     * @param [string] $message
+     * @return json
+     */
+    public function success($data){
+        $info = [
+            "data" => $data,
+            "status" => self::$SUCCESS,
+            "status_code" => self::$HTTP_OK,
+            'message' => 'successful',
         ];
         return Response::json($info,self::$HTTP_OK);
     }
@@ -119,9 +144,9 @@ class Controller extends BaseController
      * @param [string] $message
      * @return json
      */
-    public static function actionFailure($message){
+    public function actionFailure($message){
         $info = [
-            "status" => 'failed',
+            "status" => self::$FAILED,
             "status_code" => self::$HTTP_CONFLICT,
             'message' => $message,
         ];
@@ -134,9 +159,9 @@ class Controller extends BaseController
      * @param [string] $message
      * @return json
      */
-    public static function forbidden($message){
+    public function forbidden($message){
         $info = [
-            "status" => 'failed',
+            "status" => self::$FAILED,
             "status_code" => self::$HTTP_FORBIDDEN,
             'message' => $message,
         ];

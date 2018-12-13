@@ -14,7 +14,8 @@ class CreateOrganizationUserPasswordResets extends Migration
     public function up()
     {
         Schema::create('organization_user_password_resets', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
             $table->string('email');
             $table->text('token');
             $table->integer('organization_id');

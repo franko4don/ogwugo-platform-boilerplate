@@ -30,14 +30,14 @@ class ResetPasswordController extends Controller
 
         if(!Config::get('boilerplate.reset_password.release_token')) {
             return response()->json([
-                'status' => 'ok',
+                'status' => 'success',
             ]);
         }
 
         $user = User::where('email', '=', $request->get('email'))->first();
 
         return response()->json([
-            'status' => 'ok',
+            'status' => 'success',
             'token' => $JWTAuth->fromUser($user)
         ]);
     }

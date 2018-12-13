@@ -14,7 +14,8 @@ class CreateAppOrganizationTable extends Migration
     public function up()
     {
         Schema::create('app_organization', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
             $table->integer('app_id')->unsigned();
             $table->integer('organization_id')->unsigned();
             $table->integer('subscription_id')->unsigned()->nullable();

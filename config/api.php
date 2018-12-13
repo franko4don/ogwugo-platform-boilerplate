@@ -138,13 +138,12 @@ return [
     */
 
     'errorFormat' => [
-        'error' => [
+
             'message' => ':message',
             'errors' => ':errors',
-            'code' => ':code',
+            'status' => 'failed',
             'status_code' => ':status_code',
             'debug' => ':debug'
-        ]
     ],
 
     /*

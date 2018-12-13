@@ -14,7 +14,8 @@ class CreateOrganizationSubscriptionTable extends Migration
     public function up()
     {
         Schema::create('organization_subscription', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
             $table->integer('organization_id')->unsigned();
             $table->integer('subscription_id')->unsigned();
             $table->datetime('start_date');

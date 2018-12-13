@@ -14,10 +14,10 @@ class CreateAppsTable extends Migration
     public function up()
     {
         Schema::create('apps', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('api_url');
+            $table->uuid('id');
+            $table->primary('id');
+            $table->string('api_url')->unique();
             $table->string('name');
-            $table->string('uuid')->unique();
             $table->string('secret')->unique();
             $table->string('test_secret')->unique();
             $table->string('app_domain')->nullable();

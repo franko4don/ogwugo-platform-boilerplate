@@ -19,7 +19,21 @@ $api->version('v1', function (Router $api) {
     });
     $api->group(['prefix' => 'v1'], function(Router $api) {
         $api->get('test', 'App\\Api\\V1\\Controllers\\TestController@nginx');
+
+        $api->get('subscriptions', 'App\\Api\\V1\\Controllers\\SubscriptionController@subscription');
+        $api->get('subscription/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@subscription');
+        $api->post('subscription/create', 'App\\Api\\V1\\Controllers\\SubscriptionController@create');
+        $api->patch('subscription/edit/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@edit');
+        $api->delete('subscription/delete/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@delete');
         
+
+        $api->get('apps', 'App\\Api\\V1\\Controllers\\AppController@app');
+        $api->get('app/{id}', 'App\\Api\\V1\\Controllers\\AppController@getSingleApp');
+        $api->post('app/create', 'App\\Api\\V1\\Controllers\\AppController@create');
+        $api->patch('app/edit/{id}', 'App\\Api\\V1\\Controllers\\AppController@edit');
+        $api->delete('app/delete/{id}', 'App\\Api\\V1\\Controllers\\AppController@delete');
+        
+
         $api->group(['middleware' => 'jwt.auth'], function(Router $api) {
             $api->get('protected', function() {
                 return response()->json([
