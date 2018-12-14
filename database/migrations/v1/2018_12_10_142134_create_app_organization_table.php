@@ -14,11 +14,10 @@ class CreateAppOrganizationTable extends Migration
     public function up()
     {
         Schema::create('app_organization', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
-            $table->integer('app_id')->unsigned();
-            $table->integer('organization_id')->unsigned();
-            $table->integer('subscription_id')->unsigned()->nullable();
+            $table->increments('id');
+            $table->uuid('app_id');
+            $table->uuid('organization_id');
+            $table->uuid('subscription_id')->nullable();
             $table->string('custom_subdomain');
             $table->boolean('is_active')->default(false);
             $table->timestamps();

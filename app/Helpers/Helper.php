@@ -8,10 +8,9 @@ class Helper
      * Generates random set of alphanumeric code
      * @return string 
      */
-    public static function generateCode(){
+    public static function generateCode($multiplier = 12){
             $first = "";
             $second = "";
-            $multiplier = 12;
             $alpha = "ABCDEFGHIJKLMNOPQRSTUPWXYZabcdefghijklmanopqrstuvwxyz0123456789";
             
             for($i = 0; $i < $multiplier; $i++){

@@ -14,11 +14,10 @@ class CreateOrganizationUserAddress extends Migration
     public function up()
     {
         Schema::create('organization_user_address', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->string('address');
-            $table->integer('organization_user_id');
-            $table->integer('organization_id');
+            $table->uuid('organization_user_id');
+            $table->uuid('organization_id');
             $table->string('city');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();

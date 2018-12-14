@@ -1,0 +1,14 @@
+{
+    "data": {
+        "id": "58c0da78-3858-41c5-b010-7c5e84192a65",
+        "api_url": "https://something.com",
+        "name": "food service",
+        "secret": "6cbebb34bd2ea9311619f443921d7949",
+        "test_secret": "cc49f8454eec07301c9c88b05d703da8",
+        "app_domain": null,
+        "is_active": 0
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}

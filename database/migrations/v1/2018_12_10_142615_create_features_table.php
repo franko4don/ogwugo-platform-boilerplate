@@ -17,11 +17,11 @@ class CreateFeaturesTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('name');
-            $table->integer('app_id')->unsigned();
+            $table->uuid('app_id');
             $table->boolean('is_active')->default(false);
-            $table->integer('created_by')->unsigned()->nullable();
-            $table->integer('updated_by')->unsigned()->nullable();
-            $table->integer('activated_by')->unsigned()->nullable();
+            $table->uuid('created_by')->nullable();
+            $table->uuid('updated_by')->nullable();
+            $table->uuid('activated_by')->nullable();
             $table->timestamps();
         });
     }

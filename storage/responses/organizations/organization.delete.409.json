@@ -1,0 +1,5 @@
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Organizations does not exist"
+}

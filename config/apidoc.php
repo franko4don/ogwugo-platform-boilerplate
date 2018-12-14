@@ -95,7 +95,7 @@ return [
                      * API calls will be made only for routes in this group matching these HTTP methods (GET, POST, etc).
                      * List the methods here or use '*' to mean all methods. Leave empty to disable API calls.
                      */
-                    'methods' => ['*'],
+                    'methods' => ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
 
                     /*
                      * For URLs which have parameters (/users/{user}, /orders/{id?}),
@@ -103,7 +103,8 @@ return [
                      * Note that you must specify the full parameter, including curly brackets and question marks if any.
                      */
                     'bindings' => [
-                        // '{user}' => 1
+                        '/app/edit/{id}' => '58c0da78-3858-41c5-b010-7c5e84192a65',
+                        '/app/{id}' => '58c0da78-3858-41c5-b010-7c5e84192a65'
                     ],
 
                     /*

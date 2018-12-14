@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "id": "58c0da78-3858-41c5-b010-7c5e84192a65",
+            "api_url": "https://something.com",
+            "name": "food service",
+            "secret": "6cbebb34bd2ea9311619f443921d7949",
+            "test_secret": "cc49f8454eec07301c9c88b05d703da8",
+            "app_domain": null,
+            "is_active": 0
+        },
+        {
+            "id": "c4e25380-6d4b-4d4f-8169-4ad1c9d6c840",
+            "api_url": "https://something.com/api/v1/efscedf",
+            "name": "food service",
+            "secret": "b2ea5702df4f1e8a33afd19d13ebd189",
+            "test_secret": "697a38940f142aaaa39dfc976509a76b",
+            "app_domain": null,
+            "is_active": 0
+        },
+        {
+            "id": "ff422ad1-2c88-489d-a0f1-ba60be395eac",
+            "api_url": "https://something.com/api/v1",
+            "name": "food service",
+            "secret": "3dc2b9164e01bb77c071dcbab3b0d1c3",
+            "test_secret": "aab2430da0152cffa91fa6e032548904",
+            "app_domain": null,
+            "is_active": 0
+        }
+    ],
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}

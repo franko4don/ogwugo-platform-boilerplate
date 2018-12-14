@@ -14,10 +14,9 @@ class CreateFeatureSubscriptionTable extends Migration
     public function up()
     {
         Schema::create('feature_subscription', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
-            $table->integer('feature_id')->unsigned();
-            $table->integer('subscription_id')->unsigned();
+            $table->increments('id');
+            $table->uuid('feature_id');
+            $table->uuid('subscription_id');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

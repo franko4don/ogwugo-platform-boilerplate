@@ -7,6 +7,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Helpers\Helper;
+use Ramsey\Uuid\Uuid;
+
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -27,7 +29,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'deleted_at', 'created_at', 'updated_at', 'reactivation_code'
     ];
 
     /**
@@ -42,12 +44,21 @@ class User extends Authenticatable implements JWTSubject
     {
         parent::boot();
 
-        self::creating(function ($user) {
-            if (!$user->password) {
-                $user->password = '.';
+        self::creating(function ($model) {
+            if (!$model->password) {
+                $model->password = '.';
             }
-            $user->verification_code = Helper::generateCode();
+            $model->verification_code = Helper::generateCode();
+            $model->{$model->getKeyName()} = Uuid::uuid4()->toString();
         });
+    }
+
+    /**
+     * Establishes a one to many relationship with organization table
+     */
+    public function organization()
+    {
+        return $this->hasMany(Organization::class);
     }
 
     /**

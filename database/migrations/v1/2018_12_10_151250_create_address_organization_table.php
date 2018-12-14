@@ -14,9 +14,8 @@ class CreateAddressOrganizationTable extends Migration
     public function up()
     {
         Schema::create('address_organization', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
-            $table->integer('organization_id')->unsigned();
+            $table->increments('id');
+            $table->uuid('organization_id');
             $table->integer('state_id')->unsigned();
             $table->integer('country_id')->unsigned();
             $table->string('city');

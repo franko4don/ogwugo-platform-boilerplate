@@ -46,19 +46,143 @@
           <!-- START_INFO -->
 <h1>Info</h1>
 <p>Welcome to the generated API reference.
-<a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
+<a href="http://localhost:8000/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
-<h1>Auth</h1>
-<!-- START_3a9158108fb8966a09bf885f6a2b5854 -->
-<h2>Creates a user in the database</h2>
+<h1>App</h1>
+<!-- START_f85b61d1b5d40ce7d2d9a374358365aa -->
+<h2>Get all apps</h2>
+<p>Other query params includes
+<code>?activated=true</code> which gets only the activated apps
+<code>deleted</code> which gets the soft deleted apps</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/signup"     -d "firstname"="ZlOGpGdIWoLiUDdp" \
-    -d "lastname"="OcsVEJgbpjhRe2Nb" \
-    -d "email"="VZ0u9QcT7YmmX4nb" \
-    -d "password"="f58OkOXpNP6KtFUC" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/signup");
+<pre><code class="language-bash">curl -X GET -G "http://localhost:8000/api/v1/apps" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/apps");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "58c0da78-3858-41c5-b010-7c5e84192a65",
+            "api_url": "https:\/\/something.com",
+            "name": "food service",
+            "secret": "6cbebb34bd2ea9311619f443921d7949",
+            "test_secret": "cc49f8454eec07301c9c88b05d703da8",
+            "app_domain": null,
+            "is_active": 0
+        },
+        {
+            "id": "c4e25380-6d4b-4d4f-8169-4ad1c9d6c840",
+            "api_url": "https:\/\/something.com\/api\/v1\/efscedf",
+            "name": "food service",
+            "secret": "b2ea5702df4f1e8a33afd19d13ebd189",
+            "test_secret": "697a38940f142aaaa39dfc976509a76b",
+            "app_domain": null,
+            "is_active": 0
+        },
+        {
+            "id": "ff422ad1-2c88-489d-a0f1-ba60be395eac",
+            "api_url": "https:\/\/something.com\/api\/v1",
+            "name": "food service",
+            "secret": "3dc2b9164e01bb77c071dcbab3b0d1c3",
+            "test_secret": "aab2430da0152cffa91fa6e032548904",
+            "app_domain": null,
+            "is_active": 0
+        }
+    ],
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/v1/apps</code></p>
+<!-- END_f85b61d1b5d40ce7d2d9a374358365aa -->
+<!-- START_8dc6dbb9edbde1540ad1811aa47e62d8 -->
+<h2>Gets details of a single app using the id</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost:8000/api/v1/app/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/{id}");
+
+    let params = {
+            "id": "gx7boJIeeQ43JtBi",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "58c0da78-3858-41c5-b010-7c5e84192a65",
+        "api_url": "https:\/\/something.com",
+        "name": "food service",
+        "secret": "6cbebb34bd2ea9311619f443921d7949",
+        "test_secret": "cc49f8454eec07301c9c88b05d703da8",
+        "app_domain": null,
+        "is_active": 0
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/v1/app/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required id of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_8dc6dbb9edbde1540ad1811aa47e62d8 -->
+<!-- START_9b2e19a24b10171f91f138ce1a78de8d -->
+<h2>Creates or registers and app or microservice</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/app/create"     -d "name"="UyIVgEPVeu7oCkzF" \
+    -d "api_url"="4W5vRnSgWUR38EVV" \
+    -d "app_domain"="6ranS9YycLI7ww7Z" \
+    -d "secret"="Km16IUqGaBKpsjqs" \
+    -d "test_secret"="ke9p6PGJaGWX2AWI" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/create");
 
 let headers = {
     "Accept": "application/json",
@@ -66,10 +190,691 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "firstname": "ZlOGpGdIWoLiUDdp",
-    "lastname": "OcsVEJgbpjhRe2Nb",
-    "email": "VZ0u9QcT7YmmX4nb",
-    "password": "f58OkOXpNP6KtFUC",
+    "name": "UyIVgEPVeu7oCkzF",
+    "api_url": "4W5vRnSgWUR38EVV",
+    "app_domain": "6ranS9YycLI7ww7Z",
+    "secret": "Km16IUqGaBKpsjqs",
+    "test_secret": "ke9p6PGJaGWX2AWI",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "58c0da78-3858-41c5-b010-7c5e84192a65",
+        "api_url": "https:\/\/something.com",
+        "name": "food service",
+        "secret": "6cbebb34bd2ea9311619f443921d7949",
+        "test_secret": "cc49f8454eec07301c9c88b05d703da8",
+        "app_domain": null,
+        "is_active": 0
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/v1/app/create</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>name of the app</td>
+</tr>
+<tr>
+<td>api_url</td>
+<td>url</td>
+<td>required</td>
+<td>api endpoint of the app</td>
+</tr>
+<tr>
+<td>app_domain</td>
+<td>string</td>
+<td>optional</td>
+<td>optional domain of the app</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>string</td>
+<td>optional</td>
+<td>optional domain of the app</td>
+</tr>
+<tr>
+<td>test_secret</td>
+<td>string</td>
+<td>optional</td>
+<td>optional domain of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_9b2e19a24b10171f91f138ce1a78de8d -->
+<!-- START_0b3e3a1a04fe5ac37d203b1d7134562b -->
+<h2>Edits record of a given app</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/app/edit/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/edit/{id}");
+
+    let params = {
+            "name": "Sug61kbXVq1ljG6Z",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "58c0da78-3858-41c5-b010-7c5e84192a65",
+        "api_url": "https:\/\/something.com",
+        "name": "food service",
+        "secret": "6cbebb34bd2ea9311619f443921d7949",
+        "test_secret": "cc49f8454eec07301c9c88b05d703da8",
+        "app_domain": null,
+        "is_active": 0
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/app/edit/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>optional</td>
+<td>string required id of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_0b3e3a1a04fe5ac37d203b1d7134562b -->
+<!-- START_3b0028616bd08869feb00e89507bf1b4 -->
+<h2>Deletes app from database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost:8000/api/v1/app/delete/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/delete/{id}");
+
+    let params = {
+            "id": "DsEhMhPXkdEPfKxi",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) deleted"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Apps does not exist"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/v1/app/delete/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_3b0028616bd08869feb00e89507bf1b4 -->
+<!-- START_598e9dfccfb4cd8c371577d49fa05885 -->
+<h2>Deletes multiple apps from database</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost:8000/api/v1/apps/delete"     -d "apps"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/apps/delete");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "apps": "[]",
+})
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) deleted"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/v1/apps/delete</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apps</td>
+<td>array</td>
+<td>required</td>
+<td>An array of id's of apps to be deleted</td>
+</tr>
+</tbody>
+</table>
+<!-- END_598e9dfccfb4cd8c371577d49fa05885 -->
+<!-- START_09cb154a5d1565d29d82cfc4c29b043a -->
+<h2>Restore soft deleted app from database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/app/restore/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/restore/{id}");
+
+    let params = {
+            "id": "DE02A05sVGOCi6PP",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore App(s)"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/app/restore/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_09cb154a5d1565d29d82cfc4c29b043a -->
+<!-- START_1962b47bb8d42b64ea0c64bf86abc0a6 -->
+<h2>Restores multiple soft deleted apps from database</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/apps/restore"     -d "apps"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/apps/restore");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "apps": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/apps/restore</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apps</td>
+<td>array</td>
+<td>required</td>
+<td>an array of Id's of apps to be deleted</td>
+</tr>
+</tbody>
+</table>
+<!-- END_1962b47bb8d42b64ea0c64bf86abc0a6 -->
+<!-- START_274ce6680e0ed3f3a56c3222f1c1c6eb -->
+<h2>Ractivate app in database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/app/activate/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/activate/{id}");
+
+    let params = {
+            "id": "mXy0JwBbeDJrI7XG",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore App(s)"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/app/activate/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_274ce6680e0ed3f3a56c3222f1c1c6eb -->
+<!-- START_1d3fd76f9089f10b062524e401fec36d -->
+<h2>Ractivate app in database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/app/deactivate/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/app/deactivate/{id}");
+
+    let params = {
+            "id": "jtEOlloaPCICQ2Ng",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore App(s)"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/app/deactivate/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the app</td>
+</tr>
+</tbody>
+</table>
+<!-- END_1d3fd76f9089f10b062524e401fec36d -->
+<!-- START_7c61d611b6bc191b9e10534a721bd1a0 -->
+<h2>Activate multiple apps</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/apps/activate"     -d "apps"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/apps/activate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "apps": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/apps/activate</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apps</td>
+<td>array</td>
+<td>required</td>
+<td>an array of Id's of apps to be activated</td>
+</tr>
+</tbody>
+</table>
+<!-- END_7c61d611b6bc191b9e10534a721bd1a0 -->
+<!-- START_e69ed36905ec1c8571982b5a41ffb2f3 -->
+<h2>Deactivate multiple apps</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/apps/deactivate"     -d "apps"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/apps/deactivate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "apps": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "App(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "App not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/apps/deactivate</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apps</td>
+<td>array</td>
+<td>required</td>
+<td>an array of Id's of apps to be deactivated</td>
+</tr>
+</tbody>
+</table>
+<!-- END_e69ed36905ec1c8571982b5a41ffb2f3 -->
+<h1>Auth</h1>
+<!-- START_3a9158108fb8966a09bf885f6a2b5854 -->
+<h2>Creates a user in the database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/auth/signup"     -d "firstname"="zl88pipYQdajylmH" \
+    -d "lastname"="wVkAJu4rbsJC21if" \
+    -d "email"="HZcXebh1DQZ13Bqe" \
+    -d "password"="S5Ia7Zvti4qWgH3Z" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/signup");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "firstname": "zl88pipYQdajylmH",
+    "lastname": "wVkAJu4rbsJC21if",
+    "email": "HZcXebh1DQZ13Bqe",
+    "password": "S5Ia7Zvti4qWgH3Z",
 })
 
 fetch(url, {
@@ -132,9 +937,9 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/login"     -d "email"="QFesiJpAIRi7oxJX" \
-    -d "password"="vzcqNdB4zyw9Y9jl" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/login");
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/auth/login"     -d "email"="27YWbyt35sj4eCZG" \
+    -d "password"="1pA0vDSwIr7Ivmye" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/login");
 
 let headers = {
     "Accept": "application/json",
@@ -142,8 +947,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "email": "QFesiJpAIRi7oxJX",
-    "password": "vzcqNdB4zyw9Y9jl",
+    "email": "27YWbyt35sj4eCZG",
+    "password": "1pA0vDSwIr7Ivmye",
 })
 
 fetch(url, {
@@ -194,8 +999,8 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/recovery" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/recovery");
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/auth/recovery" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/recovery");
 
 let headers = {
     "Accept": "application/json",
@@ -216,8 +1021,8 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/reset" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/reset");
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/auth/reset" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/reset");
 
 let headers = {
     "Accept": "application/json",
@@ -238,8 +1043,8 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/logout" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/logout");
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/auth/logout" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/logout");
 
 let headers = {
     "Accept": "application/json",
@@ -260,8 +1065,8 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/v1/auth/refresh" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/refresh");
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/auth/refresh" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/refresh");
 
 let headers = {
     "Accept": "application/json",
@@ -285,14 +1090,821 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>POST /api/v1/auth/refresh</code></p>
 <!-- END_b591815eb7298ac67431a28c5c83b415 -->
+<h1>Organization</h1>
+<!-- START_2d865154f0c0b040fe167af9c0eec4af -->
+<h2>Get all organizations</h2>
+<p>Other query params includes
+<code>?activated=true</code> which gets only the activated organizations
+<code>deleted</code> which gets the soft deleted organizations</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost:8000/api/v1/organizations" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organizations");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+            "name": "Vincels Investment",
+            "motto": null,
+            "logo": null,
+            "domain_name": "https:\/\/something.ng",
+            "is_active": false,
+            "user": {
+                "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+                "firstname": "Franklin",
+                "lastname": "Nwanze",
+                "phone": null,
+                "email": "franko4don@gmail.com",
+                "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+                "is_active": 1,
+                "is_verified": 0
+            }
+        }
+    ],
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/v1/organizations</code></p>
+<!-- END_2d865154f0c0b040fe167af9c0eec4af -->
+<!-- START_bffb040ffb9ea131914a3475036520cb -->
+<h2>Gets details of a single organization using the id</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost:8000/api/v1/organization/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/{id}");
+
+    let params = {
+            "id": "y9ilFmU3NL20XjR9",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/v1/organization/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required id of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_bffb040ffb9ea131914a3475036520cb -->
+<!-- START_2e18aa5ffdc8eba17a81d816e0c2fb80 -->
+<h2>Creates or registers and organization</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost:8000/api/v1/organization/create"     -d "name"="j0HzPbNNzgqF3RkC" \
+    -d "domain_name"="8yB7IBOWgm45PLCr" \
+    -d "motto"="b4bNVoepv1Y0Vqec" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "name": "j0HzPbNNzgqF3RkC",
+    "domain_name": "8yB7IBOWgm45PLCr",
+    "motto": "b4bNVoepv1Y0Vqec",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/v1/organization/create</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>name of the organization</td>
+</tr>
+<tr>
+<td>domain_name</td>
+<td>string</td>
+<td>required</td>
+<td>Domain name of the organization</td>
+</tr>
+<tr>
+<td>motto</td>
+<td>string</td>
+<td>optional</td>
+<td>optional motto of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_2e18aa5ffdc8eba17a81d816e0c2fb80 -->
+<!-- START_42ab0c626a3f8426d5b8c35092ac99ce -->
+<h2>Edits record of a given organization</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organization/edit/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/edit/{id}");
+
+    let params = {
+            "name": "IoFpUhp77WOFDUuZ",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organization/edit/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>optional</td>
+<td>string required id of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_42ab0c626a3f8426d5b8c35092ac99ce -->
+<!-- START_560a4a669ef926cfcec10b517eee7e95 -->
+<h2>Deletes organization from database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost:8000/api/v1/organization/delete/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/delete/{id}");
+
+    let params = {
+            "id": "oRDVtn3Mn7LVI3YP",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) deleted"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Organizations does not exist"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/v1/organization/delete/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_560a4a669ef926cfcec10b517eee7e95 -->
+<!-- START_b57583cea228e9625171d1f01dcd7e0a -->
+<h2>Deletes multiple organizations from database</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost:8000/api/v1/organizations/delete"     -d "organizations"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organizations/delete");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "organizations": "[]",
+})
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) deleted"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/v1/organizations/delete</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organizations</td>
+<td>array</td>
+<td>required</td>
+<td>An array of id's of organizations to be deleted</td>
+</tr>
+</tbody>
+</table>
+<!-- END_b57583cea228e9625171d1f01dcd7e0a -->
+<!-- START_80380858fdd1984de861d172e0e7dc99 -->
+<h2>Restore soft deleted organization from database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organization/restore/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/restore/{id}");
+
+    let params = {
+            "id": "PTl6Dc6zcEJGwV9M",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Organization(s)"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organization/restore/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_80380858fdd1984de861d172e0e7dc99 -->
+<!-- START_c62f8199e3064a3eb3105766ced8b2a9 -->
+<h2>Restores multiple soft deleted organizations from database</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organizations/restore"     -d "organizations"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organizations/restore");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "organizations": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organizations/restore</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organizations</td>
+<td>array</td>
+<td>required</td>
+<td>an array of Id's of organizations to be deleted</td>
+</tr>
+</tbody>
+</table>
+<!-- END_c62f8199e3064a3eb3105766ced8b2a9 -->
+<!-- START_efd2298f6beeed56edc481b5ff47ecab -->
+<h2>Ractivate organization in database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organization/activate/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/activate/{id}");
+
+    let params = {
+            "id": "rB2LsQUFO1Fz2Q5u",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Organization(s)"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organization/activate/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_efd2298f6beeed56edc481b5ff47ecab -->
+<!-- START_58d454c72c76c2a98a15d83000ee85f8 -->
+<h2>Ractivate organization in database</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organization/deactivate/{id}" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organization/deactivate/{id}");
+
+    let params = {
+            "id": "C6lrbEPuMwOS8SEQ",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<blockquote>
+<p>Example response (409):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Organization(s)"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organization/deactivate/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>string required Id of the organization</td>
+</tr>
+</tbody>
+</table>
+<!-- END_58d454c72c76c2a98a15d83000ee85f8 -->
+<!-- START_e597f17bce62e9044d3179dc0a57fb70 -->
+<h2>Activate multiple organizations</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organizations/activate"     -d "organizations"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organizations/activate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "organizations": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organizations/activate</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organizations</td>
+<td>array</td>
+<td>required</td>
+<td>an array of Id's of organizations to be activated</td>
+</tr>
+</tbody>
+</table>
+<!-- END_e597f17bce62e9044d3179dc0a57fb70 -->
+<!-- START_4e7179b885297209c8d45939d13ee068 -->
+<h2>Deactivate multiple organizations</h2>
+<p>Send as x-www-form-urlencoded</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://localhost:8000/api/v1/organizations/deactivate"     -d "organizations"="[]" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/organizations/deactivate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "organizations": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization(s) restored"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH /api/v1/organizations/deactivate</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organizations</td>
+<td>array</td>
+<td>required</td>
+<td>an array of Id's of organizations to be deactivated</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4e7179b885297209c8d45939d13ee068 -->
 <h1>general</h1>
 <!-- START_35a709dd24ddef4c2e871719f80f0c39 -->
 <h2>Get the authenticated User</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X GET -G "http://localhost/api/v1/auth/me" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/v1/auth/me");
+<pre><code class="language-bash">curl -X GET -G "http://localhost:8000/api/v1/auth/me" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/auth/me");
 
 let headers = {
     "Accept": "application/json",
@@ -312,6 +1924,32 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET /api/v1/auth/me</code></p>
 <!-- END_35a709dd24ddef4c2e871719f80f0c39 -->
+<!-- START_ef3ef1493915823823835d4da4eb3f52 -->
+<h2>/api/v1/test</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost:8000/api/v1/test" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost:8000/api/v1/test");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/v1/test</code></p>
+<!-- END_ef3ef1493915823823835d4da4eb3f52 -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

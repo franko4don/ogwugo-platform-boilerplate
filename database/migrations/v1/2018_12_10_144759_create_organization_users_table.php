@@ -17,8 +17,8 @@ class CreateOrganizationUsersTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('email');
-            $table->integer('organization_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->uuid('organization_id');
+            $table->uuid('user_id');
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('phone')->nullable();
