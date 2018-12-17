@@ -39,11 +39,9 @@ class Organizationcontroller extends Controller
     {   
         $user = Auth::guard()->setToken($request->bearerToken())->getUser();
         $credentials = $request->only(['name', 'domain_name', 'motto']);
-        
-        $organization = $user->organization()->save(new Organization($credentials)); //Organization::create($request->all());
+        $organization = $user->organization()->save(new Organization($credentials));
         return $this->success($organization);
     }
-
 
     /**
      * Edits record of a given organization

@@ -62,6 +62,46 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * Establishes a one to many relationship with feature table
+     */
+    public function feature()
+    {
+        return $this->hasMany(Feature::class);
+    }
+
+    /**
+     * Establishes a one to many relationship with feature table
+     */
+    public function featureCreatedBy()
+    {
+        return $this->hasMany(Feature::class, 'created_by', 'id');
+    }
+
+    /**
+     * Establishes a one to many relationship with feature table
+     */
+    public function featureUpdatedBy()
+    {
+        return $this->hasMany(Feature::class, 'updated_by', 'id');
+    }
+
+    /**
+     * Establishes a one to many relationship with feature table
+     */
+    public function featureActivatedBy()
+    {
+        return $this->hasMany(Feature::class, 'activated_by', 'id');
+    }
+
+     /**
+     * Establishes a one to many relationship with feature table
+     */
+    public function subscriptionCreatedBy()
+    {
+        return $this->hasMany(Subscription::class, 'created_by', 'id');
+    }
+
+    /**
      * Automatically creates hash for the user password.
      *
      * @param  string  $value

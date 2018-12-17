@@ -194,7 +194,6 @@ class Appcontroller extends Controller
      * @bodyParam apps array required an array of Id's of apps to be deleted 
      * @param mixed $request
      * @return json
-     * 
      */
     public function batchRestore(Request $request){
         $restored = 0;

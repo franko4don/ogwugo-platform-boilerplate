@@ -16,10 +16,11 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->string('type');
+            $table->string('name');
+            $table->text('description');
             $table->boolean('is_active')->default(false);
-            $table->integer('created_by')->unsigned()->nullable();
-            $table->integer('updated_by')->unsigned()->nullable();
+            $table->uuid('created_by')->nullable();
+            $table->uuid('updated_by')->nullable();
             $table->integer('duration')->unsigned();
             $table->decimal('price',8, 2);
             $table->softDeletes();

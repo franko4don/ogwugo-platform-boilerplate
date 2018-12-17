@@ -17,7 +17,7 @@ class CreateFeaturesTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('name');
-            $table->uuid('app_id');
+            $table->text('description');
             $table->boolean('is_active')->default(false);
             $table->uuid('created_by')->nullable();
             $table->uuid('updated_by')->nullable();

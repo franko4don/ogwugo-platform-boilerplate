@@ -44,5 +44,13 @@ class App extends Model
         });
     }
 
+    /**
+     * Establishes a one to many relationship with feature table
+     */
+    public function feature()
+    {
+        return $this->belongsToMany(Feature::class);
+    }
+
 
 }

@@ -50,7 +50,7 @@ class LoginController extends Controller
             ->json([
                 'status' => 'success',
                 'token' => $token,
-                'expires_in' => Auth::guard()->factory()->getTTL()
+                'expires_in' => Auth::guard()->factory()->getTTL() * 60
             ]);
     }
 }

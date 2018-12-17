@@ -49,6 +49,36 @@ $api->version('v1', function (Router $api) {
         $api->patch('organizations/deactivate', 'App\\Api\\V1\\Controllers\\OrganizationController@batchDeactivate');
         
 
+        // feature api routes
+        $api->get('features', 'App\\Api\\V1\\Controllers\\FeatureController@getFeatures');
+        $api->get('feature/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@getSingleFeature');
+        $api->post('feature/create', 'App\\Api\\V1\\Controllers\\FeatureController@create');
+        $api->patch('feature/edit/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@edit');
+        $api->delete('feature/delete/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@delete');
+        $api->delete('features/delete', 'App\\Api\\V1\\Controllers\\FeatureController@batchDelete');
+        $api->patch('feature/restore/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@restore');
+        $api->patch('features/restore', 'App\\Api\\V1\\Controllers\\FeatureController@batchRestore');
+        $api->patch('feature/activate/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@activate');
+        $api->patch('feature/deactivate/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@deactivate');
+        $api->patch('features/activate', 'App\\Api\\V1\\Controllers\\FeatureController@batchActivate');
+        $api->patch('features/deactivate', 'App\\Api\\V1\\Controllers\\FeatureController@batchDeactivate');
+        
+
+        // subscription api routes
+        $api->get('subscriptions', 'App\\Api\\V1\\Controllers\\SubscriptionController@getSubscriptions');
+        $api->get('subscription/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@getSingleSubscription');
+        $api->post('subscription/create', 'App\\Api\\V1\\Controllers\\SubscriptionController@create');
+        $api->patch('subscription/edit/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@edit');
+        $api->delete('subscription/delete/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@delete');
+        $api->delete('subscriptions/delete', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchDelete');
+        $api->patch('subscription/restore/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@restore');
+        $api->patch('subscriptions/restore', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchRestore');
+        $api->patch('subscription/activate/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@activate');
+        $api->patch('subscription/deactivate/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@deactivate');
+        $api->patch('subscriptions/activate', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchActivate');
+        $api->patch('subscriptions/deactivate', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchDeactivate');
+        
+
 
         $api->group(['middleware' => 'jwt.auth'], function(Router $api) {
             $api->get('protected', function() {
