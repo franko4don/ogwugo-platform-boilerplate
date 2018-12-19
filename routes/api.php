@@ -8,8 +8,11 @@ $api = app(Router::class);
 $api->version('v1', function (Router $api) {
     $api->group(['prefix' => 'v1/auth'], function(Router $api) {
         $api->post('signup', 'App\\Api\\V1\\Controllers\\Authy\\SignUpController@signUp');
+        $api->post('signup/from-organization', 'App\\Api\\V1\\Controllers\\Authy\\SignUpController@signUpFromOrganization');
+        
         $api->post('login', 'App\\Api\\V1\\Controllers\\Authy\\LoginController@login');
-
+        $api->post('login/from-organization', 'App\\Api\\V1\\Controllers\\Authy\\LoginController@loginFromOrganization');
+       
         $api->post('recovery', 'App\\Api\\V1\\Controllers\\Authy\\ForgotPasswordController@sendResetEmail');
         $api->post('reset', 'App\\Api\\V1\\Controllers\\Authy\\ResetPasswordController@resetPassword');
 
@@ -77,6 +80,10 @@ $api->version('v1', function (Router $api) {
         $api->patch('subscription/deactivate/{id}', 'App\\Api\\V1\\Controllers\\SubscriptionController@deactivate');
         $api->patch('subscriptions/activate', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchActivate');
         $api->patch('subscriptions/deactivate', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchDeactivate');
+        
+
+        // user organization
+        $api->post('user/organization/register', 'App\\Api\\V1\\Controllers\\OrganizationUserController@register');
         
 
 

@@ -20,6 +20,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('motto')->nullable();
             $table->string('logo')->nullable();
             $table->string('domain_name', 100)->unique();
+            $table->string('secure_domain_name', 100)->unique()->nullable();
             $table->boolean('is_active')->default(false);
             $table->uuid('user_id');
             $table->softDeletes();

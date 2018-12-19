@@ -9,6 +9,7 @@ use App\Api\V1\Requests\OrganizationEditRequest;
 use App\Helpers\Helper;
 use App\Model\V1\Organization;
 use App\Resources\GenericResource;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Auth;
 
 class Organizationcontroller extends Controller
@@ -96,6 +97,10 @@ class Organizationcontroller extends Controller
      */
     public function getOrganizations(Request $request)
     {
+        
+        $user = Auth::guard()->setToken($request->bearerToken())->getUser();
+        $token = JWTAuth::getToken();
+        $payload = JWTAuth::decode($token);
         $organization = null;
         if($request->activated){
             $activated = $request->activated == "true"; 

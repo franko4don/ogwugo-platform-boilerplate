@@ -1,5 +1,5 @@
 <?php
-namespace App\Helpers\Http;
+namespace App\Helpers;
 
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;

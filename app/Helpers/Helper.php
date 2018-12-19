@@ -173,5 +173,16 @@ class Helper
         return $array;
     }
 
+    /**
+     * Gets the url the request is coming from
+     * @return string
+     */
+    public static function getRequestHost(){
+        $scheme = request()->getScheme()."://";
+        $host = request()->getHost();
+        $port = request()->getPort() == 80 ? '' : ":".request()->getPort();
+        return $scheme.$host.$port;
+    }
+
 
 }

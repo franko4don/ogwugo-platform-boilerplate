@@ -59,4 +59,12 @@ class Organization extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Establishes relationship between organization and user table
+     */
+    public function organizationUser()
+    {
+        return $this->hasMany(OrganizationUser::class);
+    }
 }

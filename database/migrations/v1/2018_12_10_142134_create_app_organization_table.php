@@ -19,6 +19,7 @@ class CreateAppOrganizationTable extends Migration
             $table->uuid('organization_id');
             $table->uuid('subscription_id')->nullable();
             $table->string('custom_subdomain');
+            $table->string('secure_custom_subdomain', 100)->unique()->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });

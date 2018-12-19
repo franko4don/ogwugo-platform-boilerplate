@@ -29,7 +29,7 @@ class Featurecontroller extends Controller
      * Creates or registers Feature
      * @bodyParam name string required name of the Feature
      * @bodyParam description string required Description of the Feature
-     * @responseFile responses/Features/Feature.get.json
+     * @responseFile responses/features/feature.get.json
      * @group Feature
      * @param mixed $request
      * @return json
@@ -49,7 +49,7 @@ class Featurecontroller extends Controller
      * Send as x-www-form-urlencoded
      * @queryParam name string required id of the Feature
      * @group Feature
-     * @responseFile responses/Features/Feature.get.json
+     * @responseFile responses/features/feature.get.json
      * @param mixed $request
      * @param string $id
      * @return json
@@ -74,7 +74,7 @@ class Featurecontroller extends Controller
      * Gets details of a single Feature using the id
      * @queryParam id string required id of the Feature
      * @group Feature
-     * @responseFile responses/Features/Feature.get.json
+     * @responseFile responses/features/feature.get.json
      * @param mixed $request
      * @param string $id
      * @return json
@@ -94,7 +94,7 @@ class Featurecontroller extends Controller
      * `?activated=true` which gets only the activated Features
      * `deleted` which gets the soft deleted Features
      * @group Feature
-     * @responseFile responses/Features/Features.get.json
+     * @responseFile responses/features/features.get.json
      * @return json
      */
     public function getFeatures(Request $request)
@@ -114,9 +114,9 @@ class Featurecontroller extends Controller
      * Deletes Feature from database
      * @queryParam id string required Id of the Feature
      * @group Feature
-     * @responseFile responses/Features/Feature.delete.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
-     * @responseFile 409 responses/Features/Feature.delete.409.json
+     * @responseFile responses/features/feature.delete.200.json
+     * @responseFile 404 responses/features/feature.404.json
+     * @responseFile 409 responses/features/feature.delete.409.json
      * @param mixed $request
      * @param string $id
      * @return json
@@ -138,8 +138,8 @@ class Featurecontroller extends Controller
      * Deletes multiple Features from database
      * Send as x-www-form-urlencoded
      * @group Feature
-     * @responseFile responses/Features/Feature.delete.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
+     * @responseFile responses/features/feature.delete.200.json
+     * @responseFile 404 responses/features/feature.404.json
      * @bodyParam Features array required An array of id's of Features to be deleted 
      * @param mixed $request
      * @return json
@@ -181,9 +181,9 @@ class Featurecontroller extends Controller
      * Restore soft deleted Feature from database
      * @queryParam id string required Id of the Feature
      * @group Feature
-     * @responseFile responses/Features/Feature.restore.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
-     * @responseFile 409 responses/Features/Feature.restore.409.json
+     * @responseFile responses/features/feature.restore.200.json
+     * @responseFile 404 responses/features/feature.404.json
+     * @responseFile 409 responses/features/feature.restore.409.json
      * @param mixed $request
      * @param string $id
      * @return json
@@ -206,8 +206,8 @@ class Featurecontroller extends Controller
      * Restores multiple soft deleted Features from database
      * Send as x-www-form-urlencoded
      * @group Feature
-     * @responseFile responses/Features/Feature.restore.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
+     * @responseFile responses/features/feature.restore.200.json
+     * @responseFile 404 responses/features/feature.404.json
      * @bodyParam Features array required an array of Id's of Features to be deleted 
      * @param mixed $request
      * @return json
@@ -249,9 +249,9 @@ class Featurecontroller extends Controller
      * Ractivate Feature in database
      * @queryParam id string required Id of the Feature
      * @group Feature
-     * @responseFile responses/Features/Feature.restore.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
-     * @responseFile 409 responses/Features/Feature.restore.409.json
+     * @responseFile responses/features/feature.restore.200.json
+     * @responseFile 404 responses/features/feature.404.json
+     * @responseFile 409 responses/features/feature.restore.409.json
      * @param mixed $request
      * @param string $id
      * @return json
@@ -276,9 +276,9 @@ class Featurecontroller extends Controller
      * Ractivate Feature in database
      * @queryParam id string required Id of the Feature
      * @group Feature
-     * @responseFile responses/Features/Feature.restore.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
-     * @responseFile 409 responses/Features/Feature.restore.409.json
+     * @responseFile responses/features/feature.restore.200.json
+     * @responseFile 404 responses/features/feature.404.json
+     * @responseFile 409 responses/features/feature.restore.409.json
      * @param mixed $request
      * @param string $id
      * @return json
@@ -303,8 +303,8 @@ class Featurecontroller extends Controller
      * Activate multiple Features
      * Send as x-www-form-urlencoded
      * @group Feature
-     * @responseFile responses/Features/Feature.restore.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
+     * @responseFile responses/features/feature.restore.200.json
+     * @responseFile 404 responses/features/feature.404.json
      * @bodyParam Features array required an array of Id's of Features to be activated 
      * @param mixed $request
      * @return json
@@ -347,8 +347,8 @@ class Featurecontroller extends Controller
      * Deactivate multiple Features
      * Send as x-www-form-urlencoded
      * @group Feature
-     * @responseFile responses/Features/Feature.restore.200.json
-     * @responseFile 404 responses/Features/Feature.404.json
+     * @responseFile responses/features/feature.restore.200.json
+     * @responseFile 404 responses/features/feature.404.json
      * @bodyParam Features array required an array of Id's of Features to be deactivated 
      * @param mixed $request
      * @return json

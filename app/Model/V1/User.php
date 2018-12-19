@@ -62,6 +62,16 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * Establishes a one to many relationship with organization table
+     */
+    public function currentOrganizationUser($organization)
+    {
+        return $this->hasMany(OrganizationUser::class)
+                    ->where('organization_id', $organization->id)
+                    ->first();
+    }
+
+    /**
      * Establishes a one to many relationship with feature table
      */
     public function feature()

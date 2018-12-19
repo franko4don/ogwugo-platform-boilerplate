@@ -349,7 +349,6 @@ class Subscriptioncontroller extends Controller
      * @bodyParam Subscriptions array required an array of Id's of Subscriptions to be deactivated 
      * @param mixed $request
      * @return json
-     * 
      */
     public function batchDeactivate(Request $request)
     {
