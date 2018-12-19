@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+            "name": "Vincels Investment",
+            "motto": null,
+            "logo": null,
+            "domain_name": "https://something.ng",
+            "is_active": false,
+            "user": {
+                "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+                "firstname": "Franklin",
+                "lastname": "Nwanze",
+                "phone": null,
+                "email": "franko4don@gmail.com",
+                "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+                "is_active": 1,
+                "is_verified": 0
+            }
+        }
+    ],
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}

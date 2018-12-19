@@ -20,6 +20,7 @@ $api->version('v1', function (Router $api) {
         $api->post('refresh', 'App\\Api\\V1\\Controllers\\Authy\\RefreshController@refresh');
         $api->get('me', 'App\\Api\\V1\\Controllers\\UserController@me');
     });
+    
     $api->group(['prefix' => 'v1'], function(Router $api) {
         $api->get('test', 'App\\Api\\V1\\Controllers\\TestController@nginx');
 
@@ -83,7 +84,7 @@ $api->version('v1', function (Router $api) {
         
 
         // user organization
-        $api->post('user/organization/register', 'App\\Api\\V1\\Controllers\\OrganizationUserController@register');
+        // $api->post('user/organization/register', 'App\\Api\\V1\\Controllers\\OrganizationUserController@register');
         
 
 

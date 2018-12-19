@@ -113,9 +113,9 @@ class Subscriptioncontroller extends Controller
      * Deletes Subscription from database
      * @queryParam id string required Id of the Subscription
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.delete.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
-     * @responseFile 409 responses/subscriptions/subscription.delete.409.json
+     * @responseFile responses/general/200.json {"message" : "Subscription Deleted"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete Subscription"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -137,8 +137,9 @@ class Subscriptioncontroller extends Controller
      * Deletes multiple Subscriptions from database
      * Send as x-www-form-urlencoded
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.delete.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Subscriptions Deleted"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete Subscription(s)"}
      * @bodyParam Subscriptions array required An array of id's of Subscriptions to be deleted 
      * @param mixed $request
      * @return json
@@ -180,9 +181,9 @@ class Subscriptioncontroller extends Controller
      * Restore soft deleted Subscription from database
      * @queryParam id string required Id of the Subscription
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.restore.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
-     * @responseFile 409 responses/subscriptions/subscription.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "Subscription Restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not restore Subscription"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -205,9 +206,10 @@ class Subscriptioncontroller extends Controller
      * Restores multiple soft deleted Subscriptions from database
      * Send as x-www-form-urlencoded
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.restore.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
-     * @bodyParam Subscriptions array required an array of Id's of Subscriptions to be deleted 
+     * @responseFile responses/general/200.json {"message" : "5 Subscriptions restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not restore Subscription(s)"}
+     * @bodyParam Subscriptions array required an array of Id's of Subscriptions to be restored 
      * @param mixed $request
      * @return json
      * 
@@ -248,9 +250,9 @@ class Subscriptioncontroller extends Controller
      * Ractivate Subscription in database
      * @queryParam id string required Id of the Subscription
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.restore.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
-     * @responseFile 409 responses/subscriptions/subscription.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "Subscription activated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not activate Subscription"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -273,9 +275,9 @@ class Subscriptioncontroller extends Controller
      * Ractivate Subscription in database
      * @queryParam id string required Id of the Subscription
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.restore.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
-     * @responseFile 409 responses/subscriptions/subscription.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "Subscription deactivated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not deactivate Subscription"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -300,8 +302,9 @@ class Subscriptioncontroller extends Controller
      * Activate multiple Subscriptions
      * Send as x-www-form-urlencoded
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.restore.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Subscriptions activated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not activate Subscription"}
      * @bodyParam Subscriptions array required an array of Id's of Subscriptions to be activated 
      * @param mixed $request
      * @return json
@@ -344,8 +347,9 @@ class Subscriptioncontroller extends Controller
      * Deactivate multiple Subscriptions
      * Send as x-www-form-urlencoded
      * @group Subscription
-     * @responseFile responses/subscriptions/subscription.restore.200.json
-     * @responseFile 404 responses/subscriptions/subscription.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Subscriptions deactivated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Subscription(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not deactivate Subscription(s)"}
      * @bodyParam Subscriptions array required an array of Id's of Subscriptions to be deactivated 
      * @param mixed $request
      * @return json

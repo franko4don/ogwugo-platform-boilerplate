@@ -59,7 +59,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Log the user in
+     * Log the user in from organization
      * @group Auth
      * @bodyParam email string required The email of user.
      * @bodyParam password string required The password of user.

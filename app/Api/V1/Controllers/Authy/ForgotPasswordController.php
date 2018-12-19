@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ForgotPasswordController extends Controller
 {   
     /**
-     * send reset password email
+     * Send reset password email
      * @group Auth
      */
     public function sendResetEmail(ForgotPasswordRequest $request)

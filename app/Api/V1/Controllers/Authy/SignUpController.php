@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Helpers\Helper;
 use Auth;
 
+
 class SignUpController extends Controller
 {
     /**
@@ -58,7 +59,7 @@ class SignUpController extends Controller
     }
 
     /**
-     * Creates a user in the database
+     * Creates a user in the database from organizations
      * @group Auth
      * @bodyParam firstname string required The firstname of user.
      * @bodyParam lastname string required The lastname of user.
@@ -85,7 +86,7 @@ class SignUpController extends Controller
                 $user = User::find($signup->getData()->data->id);
                 return $this->createUserOrganizationAccount($request, $user, $JWTAuth);
             }else{
-                
+                return $signup;
             }
         }else{
             return $this->createUserOrganizationAccount($request, $user, $JWTAuth);

@@ -116,9 +116,9 @@ class Organizationcontroller extends Controller
      * Deletes organization from database
      * @queryParam id string required Id of the organization
      * @group Organization
-     * @responseFile responses/organizations/organization.delete.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
-     * @responseFile 409 responses/organizations/organization.delete.409.json
+     * @responseFile responses/general/200.json {"message" : "Organization Deleted"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete Organization"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -140,8 +140,9 @@ class Organizationcontroller extends Controller
      * Deletes multiple organizations from database
      * Send as x-www-form-urlencoded
      * @group Organization
-     * @responseFile responses/organizations/organization.delete.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Organizations Deleted"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete Organization(s)"}
      * @bodyParam organizations array required An array of id's of organizations to be deleted 
      * @param mixed $request
      * @return json
@@ -183,9 +184,9 @@ class Organizationcontroller extends Controller
      * Restore soft deleted organization from database
      * @queryParam id string required Id of the organization
      * @group Organization
-     * @responseFile responses/organizations/organization.restore.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
-     * @responseFile 409 responses/organizations/organization.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "Organization Restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not restore Organization"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -208,8 +209,9 @@ class Organizationcontroller extends Controller
      * Restores multiple soft deleted organizations from database
      * Send as x-www-form-urlencoded
      * @group Organization
-     * @responseFile responses/organizations/organization.restore.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Organizations Restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not restore (s)"}
      * @bodyParam organizations array required an array of Id's of organizations to be deleted 
      * @param mixed $request
      * @return json
@@ -248,12 +250,12 @@ class Organizationcontroller extends Controller
 
 
     /**
-     * Ractivate organization in database
+     * Activate organization in database
      * @queryParam id string required Id of the organization
      * @group Organization
-     * @responseFile responses/organizations/organization.restore.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
-     * @responseFile 409 responses/organizations/organization.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "Organization Activated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not activate Organization"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -273,12 +275,12 @@ class Organizationcontroller extends Controller
     }
 
     /**
-     * Ractivate organization in database
+     * deactivate organization in database
      * @queryParam id string required Id of the organization
      * @group Organization
-     * @responseFile responses/organizations/organization.restore.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
-     * @responseFile 409 responses/organizations/organization.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "Organization Deactivated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not deactivate Organization"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -303,8 +305,9 @@ class Organizationcontroller extends Controller
      * Activate multiple organizations
      * Send as x-www-form-urlencoded
      * @group Organization
-     * @responseFile responses/organizations/organization.restore.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Organization Activated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not activate Organization(s)"}
      * @bodyParam organizations array required an array of Id's of organizations to be activated 
      * @param mixed $request
      * @return json
@@ -347,8 +350,9 @@ class Organizationcontroller extends Controller
      * Deactivate multiple organizations
      * Send as x-www-form-urlencoded
      * @group Organization
-     * @responseFile responses/organizations/organization.restore.200.json
-     * @responseFile 404 responses/organizations/organization.404.json
+     * @responseFile responses/general/200.json {"message" : "5 Organization Deactivated"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not deactivate Organization(s)"}
      * @bodyParam organizations array required an array of Id's of organizations to be deactivated 
      * @param mixed $request
      * @return json

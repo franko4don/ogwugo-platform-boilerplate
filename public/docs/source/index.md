@@ -107,7 +107,7 @@ curl -X GET -G "http://localhost:8000/api/v1/app/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/{id}");
 
     let params = {
-            "id": "gx7boJIeeQ43JtBi",
+            "id": "gmHkqFQXrwbblCdY",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -160,11 +160,11 @@ Parameter | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/app/create"     -d "name"="UyIVgEPVeu7oCkzF" \
-    -d "api_url"="4W5vRnSgWUR38EVV" \
-    -d "app_domain"="6ranS9YycLI7ww7Z" \
-    -d "secret"="Km16IUqGaBKpsjqs" \
-    -d "test_secret"="ke9p6PGJaGWX2AWI" 
+curl -X POST "http://localhost:8000/api/v1/app/create"     -d "name"="ISe6ULHa26lKcpqn" \
+    -d "api_url"="ZvVibgoPqdW9TUEK" \
+    -d "app_domain"="NHZgaPFq26rbsJSR" \
+    -d "secret"="hGAYf85UYIHnchis" \
+    -d "test_secret"="R18qtfM8mtQbeY6J" 
 ```
 
 ```javascript
@@ -176,11 +176,11 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "name": "UyIVgEPVeu7oCkzF",
-    "api_url": "4W5vRnSgWUR38EVV",
-    "app_domain": "6ranS9YycLI7ww7Z",
-    "secret": "Km16IUqGaBKpsjqs",
-    "test_secret": "ke9p6PGJaGWX2AWI",
+    "name": "ISe6ULHa26lKcpqn",
+    "api_url": "ZvVibgoPqdW9TUEK",
+    "app_domain": "NHZgaPFq26rbsJSR",
+    "secret": "hGAYf85UYIHnchis",
+    "test_secret": "R18qtfM8mtQbeY6J",
 })
 
 fetch(url, {
@@ -240,7 +240,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/edit/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/edit/{id}");
 
     let params = {
-            "name": "Sug61kbXVq1ljG6Z",
+            "name": "oPGVct9w5Xfsih4G",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -300,7 +300,7 @@ curl -X DELETE "http://localhost:8000/api/v1/app/delete/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/delete/{id}");
 
     let params = {
-            "id": "DsEhMhPXkdEPfKxi",
+            "id": "n8CrqRoL9IwbA8Il",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -323,7 +323,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) deleted"
+    "message": "App(s) Deleted"
 }
 ```
 > Example response (404):
@@ -332,7 +332,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
 }
 ```
 > Example response (409):
@@ -341,7 +341,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Apps does not exist"
+    "message": "Could not delete App(s)"
 }
 ```
 
@@ -393,7 +393,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) deleted"
+    "message": "5 App(s) Deleted"
 }
 ```
 > Example response (404):
@@ -402,7 +402,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
 }
 ```
 
@@ -430,7 +430,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/restore/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/restore/{id}");
 
     let params = {
-            "id": "DE02A05sVGOCi6PP",
+            "id": "6cJekqxJvQDMFlFy",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -453,7 +453,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) restored"
+    "message": "App Restored"
 }
 ```
 > Example response (404):
@@ -462,7 +462,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
 }
 ```
 > Example response (409):
@@ -471,7 +471,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Could not restore App(s)"
+    "message": "Could not delete App(s)"
 }
 ```
 
@@ -523,7 +523,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) restored"
+    "message": "5 App Restored"
 }
 ```
 > Example response (404):
@@ -532,7 +532,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not delete App(s)"
 }
 ```
 
@@ -560,7 +569,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/activate/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/activate/{id}");
 
     let params = {
-            "id": "mXy0JwBbeDJrI7XG",
+            "id": "arHkjNAsdG8ZGEB0",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -583,7 +592,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) restored"
+    "message": "App Restored"
 }
 ```
 > Example response (404):
@@ -601,7 +610,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Could not restore App(s)"
+    "message": "Could not reactivate App"
 }
 ```
 
@@ -617,7 +626,7 @@ Parameter | Status | Description
 <!-- END_274ce6680e0ed3f3a56c3222f1c1c6eb -->
 
 <!-- START_1d3fd76f9089f10b062524e401fec36d -->
-## Ractivate app in database
+## Deactivate app in database
 
 > Example request:
 
@@ -629,7 +638,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/deactivate/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/deactivate/{id}");
 
     let params = {
-            "id": "jtEOlloaPCICQ2Ng",
+            "id": "WLwTdkmnBU3VZeEg",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -652,7 +661,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) restored"
+    "message": "App deactivated"
 }
 ```
 > Example response (404):
@@ -661,7 +670,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
 }
 ```
 > Example response (409):
@@ -670,7 +679,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Could not restore App(s)"
+    "message": "Could not deactivate found"
 }
 ```
 
@@ -722,7 +731,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) restored"
+    "message": "5 Apps Activated"
 }
 ```
 > Example response (404):
@@ -731,7 +740,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate App"
 }
 ```
 
@@ -783,7 +801,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "App(s) restored"
+    "message": "5 Apps deactivated"
 }
 ```
 > Example response (404):
@@ -792,7 +810,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "App not found"
+    "message": "App(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate Apps"
 }
 ```
 
@@ -814,10 +841,10 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/auth/signup"     -d "firstname"="zl88pipYQdajylmH" \
-    -d "lastname"="wVkAJu4rbsJC21if" \
-    -d "email"="HZcXebh1DQZ13Bqe" \
-    -d "password"="S5Ia7Zvti4qWgH3Z" 
+curl -X POST "http://localhost:8000/api/v1/auth/signup"     -d "firstname"="koY1l25RXtVriWRV" \
+    -d "lastname"="c4ExjbYWCk1ot3hf" \
+    -d "email"="KJ42V1JVvAUZXmyc" \
+    -d "password"="awaJK9Qc80z0ZSdk" 
 ```
 
 ```javascript
@@ -829,10 +856,10 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "firstname": "zl88pipYQdajylmH",
-    "lastname": "wVkAJu4rbsJC21if",
-    "email": "HZcXebh1DQZ13Bqe",
-    "password": "S5Ia7Zvti4qWgH3Z",
+    "firstname": "koY1l25RXtVriWRV",
+    "lastname": "c4ExjbYWCk1ot3hf",
+    "email": "KJ42V1JVvAUZXmyc",
+    "password": "awaJK9Qc80z0ZSdk",
 })
 
 fetch(url, {
@@ -868,14 +895,74 @@ Parameter | Type | Status | Description
 
 <!-- END_3a9158108fb8966a09bf885f6a2b5854 -->
 
+<!-- START_0a3f560c3b32c7f7a0a011fc15783ba8 -->
+## Creates a user in the database from organizations
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/auth/signup/from-organization"     -d "firstname"="Y6GaBjlxjNa7lzzd" \
+    -d "lastname"="WsPWqYvI8NalDiZF" \
+    -d "email"="s0GKn3NeSRYx6yeL" \
+    -d "password"="qQxkRuN6tYWnqrkD" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/auth/signup/from-organization");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "firstname": "Y6GaBjlxjNa7lzzd",
+    "lastname": "WsPWqYvI8NalDiZF",
+    "email": "s0GKn3NeSRYx6yeL",
+    "password": "qQxkRuN6tYWnqrkD",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "ok",
+    "token": "fdsvgdrufsversdubfvgydrsfhewjrdvsfvsetdvbfwredsfvywehrdvsyveasdgrgcwasjgvdwwsd",
+    "expires_in": 345653
+}
+```
+
+### HTTP Request
+`POST /api/v1/auth/signup/from-organization`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    firstname | string |  required  | The firstname of user.
+    lastname | string |  required  | The lastname of user.
+    email | string |  optional  | The email of user.
+    password | string |  optional  | The password of user
+
+<!-- END_0a3f560c3b32c7f7a0a011fc15783ba8 -->
+
 <!-- START_f76cc718539c2362f0d0a7069100319e -->
 ## Log the user in
 
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/auth/login"     -d "email"="27YWbyt35sj4eCZG" \
-    -d "password"="1pA0vDSwIr7Ivmye" 
+curl -X POST "http://localhost:8000/api/v1/auth/login"     -d "email"="yPXgr6MAKbopp0Pc" \
+    -d "password"="nJC0TNgNi6lZ3KUT" 
 ```
 
 ```javascript
@@ -887,8 +974,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "email": "27YWbyt35sj4eCZG",
-    "password": "1pA0vDSwIr7Ivmye",
+    "email": "yPXgr6MAKbopp0Pc",
+    "password": "nJC0TNgNi6lZ3KUT",
 })
 
 fetch(url, {
@@ -922,8 +1009,62 @@ Parameter | Type | Status | Description
 
 <!-- END_f76cc718539c2362f0d0a7069100319e -->
 
+<!-- START_c6e90c30915f5763f5ff8302eff98f2c -->
+## Log the user in from organization
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/auth/login/from-organization"     -d "email"="keauEr9mOye9efvn" \
+    -d "password"="wSnm40vcuYG5XM42" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/auth/login/from-organization");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "email": "keauEr9mOye9efvn",
+    "password": "wSnm40vcuYG5XM42",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "ok",
+    "token": "fdsvgdrufsversdubfvgydrsfhewjrdvsfvsetdvbfwredsfvywehrdvsyveasdgrgcwasjgvdwwsd",
+    "expires_in": 345653
+}
+```
+
+### HTTP Request
+`POST /api/v1/auth/login/from-organization`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    email | string |  required  | The email of user.
+    password | string |  required  | The password of user.
+
+<!-- END_c6e90c30915f5763f5ff8302eff98f2c -->
+
 <!-- START_a74630f31659c578c0a95bd6fd851140 -->
-## send reset password email
+## Send reset password email
 
 > Example request:
 
@@ -1059,6 +1200,838 @@ fetch(url, {
 
 <!-- END_b591815eb7298ac67431a28c5c83b415 -->
 
+#Feature
+<!-- START_2104a3c3f77e9888281bed9b191c66fb -->
+## Get all Features
+Other query params includes
+`?activated=true` which gets only the activated Features
+`deleted` which gets the soft deleted Features
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost:8000/api/v1/features" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/features");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": [
+        {
+            "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+            "name": "Vincels Investment",
+            "motto": null,
+            "logo": null,
+            "domain_name": "https:\/\/something.ng",
+            "is_active": false,
+            "user": {
+                "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+                "firstname": "Franklin",
+                "lastname": "Nwanze",
+                "phone": null,
+                "email": "franko4don@gmail.com",
+                "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+                "is_active": 1,
+                "is_verified": 0
+            }
+        }
+    ],
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`GET /api/v1/features`
+
+
+<!-- END_2104a3c3f77e9888281bed9b191c66fb -->
+
+<!-- START_ee5266029421554c5008a30608409b36 -->
+## Gets details of a single Feature using the id
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost:8000/api/v1/feature/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/{id}");
+
+    let params = {
+            "id": "sM63X4zeXtnNv0zw",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`GET /api/v1/feature/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required id of the Feature
+
+<!-- END_ee5266029421554c5008a30608409b36 -->
+
+<!-- START_3294c5a22a97e86dd75d79769594d593 -->
+## Creates or registers Feature
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/feature/create"     -d "name"="VfCvXYaSAAf3tcEq" \
+    -d "description"="WVkuvwDxgnDZtm15" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "name": "VfCvXYaSAAf3tcEq",
+    "description": "WVkuvwDxgnDZtm15",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`POST /api/v1/feature/create`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | name of the Feature
+    description | string |  required  | Description of the Feature
+
+<!-- END_3294c5a22a97e86dd75d79769594d593 -->
+
+<!-- START_56d645c64899c1ec4596c057356d4d8c -->
+## Edits record of a given Feature
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/feature/edit/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/edit/{id}");
+
+    let params = {
+            "name": "qGHUqxeDffEMOPI9",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/feature/edit/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    name |  optional  | string required id of the Feature
+
+<!-- END_56d645c64899c1ec4596c057356d4d8c -->
+
+<!-- START_3e48f143cdc14a798a84447c66356b15 -->
+## Deletes Feature from database
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/feature/delete/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/delete/{id}");
+
+    let params = {
+            "id": "8wghrMOwS5pickqT",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Feature Deleted"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not delete Feature"
+}
+```
+
+### HTTP Request
+`DELETE /api/v1/feature/delete/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Feature
+
+<!-- END_3e48f143cdc14a798a84447c66356b15 -->
+
+<!-- START_c3a5201be30062fb7a17e3c9aa9409a9 -->
+## Deletes multiple Features from database
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/features/delete"     -d "features"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/features/delete");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "features": "[]",
+})
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Features Deleted"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not delete Feature(s)"
+}
+```
+
+### HTTP Request
+`DELETE /api/v1/features/delete`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    features | array |  required  | An array of id's of Features to be deleted
+
+<!-- END_c3a5201be30062fb7a17e3c9aa9409a9 -->
+
+<!-- START_67a1e6bb2377f2735b68b92cbfa72b91 -->
+## Restore soft deleted Feature from database
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/feature/restore/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/restore/{id}");
+
+    let params = {
+            "id": "TMJTbv124z2xf4bc",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Feature Restore"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Feature"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/feature/restore/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Feature
+
+<!-- END_67a1e6bb2377f2735b68b92cbfa72b91 -->
+
+<!-- START_ac75364c5b67e4bc15de7469258240cc -->
+## Restores multiple soft deleted Features from database
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/features/restore"     -d "Features"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/features/restore");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Features": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Feature Restored"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Feature(s)"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/features/restore`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Features | array |  required  | an array of Id's of Features to be restored
+
+<!-- END_ac75364c5b67e4bc15de7469258240cc -->
+
+<!-- START_e44bb777c17011fe9f2ab7e515213f8f -->
+## Ractivate Feature in database
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/feature/activate/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/activate/{id}");
+
+    let params = {
+            "id": "ya02lN1JXwdgala3",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Feature Activated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate Feature"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/feature/activate/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Feature
+
+<!-- END_e44bb777c17011fe9f2ab7e515213f8f -->
+
+<!-- START_682a4a09ab87c7ba6c54348e11d2165d -->
+## Ractivate Feature in database
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/feature/deactivate/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/feature/deactivate/{id}");
+
+    let params = {
+            "id": "ST1rxUdMi1mfQwMV",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Feature Deactivated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not deactivate Feature"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/feature/deactivate/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Feature
+
+<!-- END_682a4a09ab87c7ba6c54348e11d2165d -->
+
+<!-- START_207f3e2a0d4ea831f4997dae2ce3f440 -->
+## Activate multiple Features
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/features/activate"     -d "Features"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/features/activate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Features": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Features Activated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate Feature(s)"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/features/activate`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Features | array |  required  | an array of Id's of Features to be activated
+
+<!-- END_207f3e2a0d4ea831f4997dae2ce3f440 -->
+
+<!-- START_a8cd953e6b501a3066cba5756257bfb6 -->
+## Deactivate multiple Features
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/features/deactivate"     -d "Features"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/features/deactivate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Features": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Features Deactivated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Feature(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not deactivate Feature(s)"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/features/deactivate`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Features | array |  required  | an array of Id's of Features to be deactivated
+
+<!-- END_a8cd953e6b501a3066cba5756257bfb6 -->
+
 #Organization
 <!-- START_2d865154f0c0b040fe167af9c0eec4af -->
 ## Get all organizations
@@ -1137,7 +2110,7 @@ curl -X GET -G "http://localhost:8000/api/v1/organization/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/{id}");
 
     let params = {
-            "id": "y9ilFmU3NL20XjR9",
+            "id": "0p9yBWAOlOvLqsfJ",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1199,9 +2172,9 @@ Parameter | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/organization/create"     -d "name"="j0HzPbNNzgqF3RkC" \
-    -d "domain_name"="8yB7IBOWgm45PLCr" \
-    -d "motto"="b4bNVoepv1Y0Vqec" 
+curl -X POST "http://localhost:8000/api/v1/organization/create"     -d "name"="6L19JWcChAdJJQ9M" \
+    -d "domain_name"="HRozVPhHKuAbnm2R" \
+    -d "motto"="CaOoaef57yYrkFVr" 
 ```
 
 ```javascript
@@ -1213,9 +2186,9 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "name": "j0HzPbNNzgqF3RkC",
-    "domain_name": "8yB7IBOWgm45PLCr",
-    "motto": "b4bNVoepv1Y0Vqec",
+    "name": "6L19JWcChAdJJQ9M",
+    "domain_name": "HRozVPhHKuAbnm2R",
+    "motto": "CaOoaef57yYrkFVr",
 })
 
 fetch(url, {
@@ -1282,7 +2255,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/edit/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/edit/{id}");
 
     let params = {
-            "name": "IoFpUhp77WOFDUuZ",
+            "name": "xIMvYFRF041aPCqk",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1351,7 +2324,7 @@ curl -X DELETE "http://localhost:8000/api/v1/organization/delete/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/delete/{id}");
 
     let params = {
-            "id": "oRDVtn3Mn7LVI3YP",
+            "id": "KeKgKHVoJmDkZ4Ib",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1374,7 +2347,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) deleted"
+    "message": "Organization Deleted"
 }
 ```
 > Example response (404):
@@ -1392,7 +2365,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Organizations does not exist"
+    "message": "Could not delete Organization"
 }
 ```
 
@@ -1444,7 +2417,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) deleted"
+    "message": "5 Organizations Deleted"
 }
 ```
 > Example response (404):
@@ -1453,7 +2426,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "Organization not found"
+    "message": "Organization(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not delete Organization(s)"
 }
 ```
 
@@ -1481,7 +2463,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/restore/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/restore/{id}");
 
     let params = {
-            "id": "PTl6Dc6zcEJGwV9M",
+            "id": "kqNAjlPp0CFmG6fZ",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1504,7 +2486,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) restored"
+    "message": "Organization Restored"
 }
 ```
 > Example response (404):
@@ -1522,7 +2504,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Could not restore Organization(s)"
+    "message": "Could not restore Organization"
 }
 ```
 
@@ -1574,7 +2556,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) restored"
+    "message": "5 Organizations Restored"
 }
 ```
 > Example response (404):
@@ -1583,7 +2565,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "Organization not found"
+    "message": "Organization(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore (s)"
 }
 ```
 
@@ -1599,7 +2590,7 @@ Parameter | Type | Status | Description
 <!-- END_c62f8199e3064a3eb3105766ced8b2a9 -->
 
 <!-- START_efd2298f6beeed56edc481b5ff47ecab -->
-## Ractivate organization in database
+## Activate organization in database
 
 > Example request:
 
@@ -1611,7 +2602,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/activate/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/activate/{id}");
 
     let params = {
-            "id": "rB2LsQUFO1Fz2Q5u",
+            "id": "5A0h4vNQs7BBmrQ5",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1634,7 +2625,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) restored"
+    "message": "Organization Activated"
 }
 ```
 > Example response (404):
@@ -1652,7 +2643,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Could not restore Organization(s)"
+    "message": "Could not activate Organization"
 }
 ```
 
@@ -1668,7 +2659,7 @@ Parameter | Status | Description
 <!-- END_efd2298f6beeed56edc481b5ff47ecab -->
 
 <!-- START_58d454c72c76c2a98a15d83000ee85f8 -->
-## Ractivate organization in database
+## deactivate organization in database
 
 > Example request:
 
@@ -1680,7 +2671,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/deactivate/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/deactivate/{id}");
 
     let params = {
-            "id": "C6lrbEPuMwOS8SEQ",
+            "id": "gQg6tnWsNhxNraKV",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1703,7 +2694,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) restored"
+    "message": "Organization Deactivated"
 }
 ```
 > Example response (404):
@@ -1721,7 +2712,7 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 409,
-    "message": "Could not restore Organization(s)"
+    "message": "Could not deactivate Organization"
 }
 ```
 
@@ -1773,7 +2764,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) restored"
+    "message": "5 Organization Activated"
 }
 ```
 > Example response (404):
@@ -1782,7 +2773,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "Organization not found"
+    "message": "Organization(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate Organization(s)"
 }
 ```
 
@@ -1834,7 +2834,7 @@ fetch(url, {
 {
     "status": "success",
     "status_code": 200,
-    "message": "Organization(s) restored"
+    "message": "5 Organization Deactivated"
 }
 ```
 > Example response (404):
@@ -1843,7 +2843,16 @@ fetch(url, {
 {
     "status": "failed",
     "status_code": 404,
-    "message": "Organization not found"
+    "message": "Organization(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not deactivate Organization(s)"
 }
 ```
 
@@ -1857,6 +2866,841 @@ Parameter | Type | Status | Description
     organizations | array |  required  | an array of Id's of organizations to be deactivated
 
 <!-- END_4e7179b885297209c8d45939d13ee068 -->
+
+#Subscription
+<!-- START_8b2d5f0620d38573ccce051974a129c2 -->
+## Get all Subscriptions
+Other query params includes
+`?activated=true` which gets only the activated Subscriptions
+`deleted` which gets the soft deleted Subscriptions
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost:8000/api/v1/subscriptions" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscriptions");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": [
+        {
+            "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+            "name": "Vincels Investment",
+            "motto": null,
+            "logo": null,
+            "domain_name": "https:\/\/something.ng",
+            "is_active": false,
+            "user": {
+                "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+                "firstname": "Franklin",
+                "lastname": "Nwanze",
+                "phone": null,
+                "email": "franko4don@gmail.com",
+                "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+                "is_active": 1,
+                "is_verified": 0
+            }
+        }
+    ],
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`GET /api/v1/subscriptions`
+
+
+<!-- END_8b2d5f0620d38573ccce051974a129c2 -->
+
+<!-- START_ef665351ccabe0090ffac191c4033ca1 -->
+## Gets details of a single Subscription using the id
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost:8000/api/v1/subscription/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/{id}");
+
+    let params = {
+            "id": "YrhSMeLjavmdIuPQ",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`GET /api/v1/subscription/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required id of the Subscription
+
+<!-- END_ef665351ccabe0090ffac191c4033ca1 -->
+
+<!-- START_28ff3b07f226550cfbcfe1898aa82f19 -->
+## Creates or registers and Subscription
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/subscription/create"     -d "name"="CiYdQtk1p5lSyCue" \
+    -d "domain_name"="ZjNF8t7B5ACacDq4" \
+    -d "motto"="SEBdSTE6U3KIASLT" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "name": "CiYdQtk1p5lSyCue",
+    "domain_name": "ZjNF8t7B5ACacDq4",
+    "motto": "SEBdSTE6U3KIASLT",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`POST /api/v1/subscription/create`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | name of the Subscription
+    domain_name | string |  required  | Domain name of the Subscription
+    motto | string |  optional  | optional motto of the Subscription
+
+<!-- END_28ff3b07f226550cfbcfe1898aa82f19 -->
+
+<!-- START_869edca8f7bb6a33cd642c70e7001d7a -->
+## Edits record of a given Subscription
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscription/edit/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/edit/{id}");
+
+    let params = {
+            "name": "yzpapvcsOPcVzK9V",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "id": "7b842a5c-2c4c-4ce9-bcb8-814d1b6d7222",
+        "name": "Vincels Investment",
+        "motto": null,
+        "logo": null,
+        "domain_name": "https:\/\/something.ng",
+        "is_active": false,
+        "user": {
+            "id": "372e95a7-7ce1-4c17-80da-bc49fcbaba64",
+            "firstname": "Franklin",
+            "lastname": "Nwanze",
+            "phone": null,
+            "email": "franko4don@gmail.com",
+            "verification_code": "uU8ZZLgSwQkZ0xndqfwDjEFq",
+            "is_active": 1,
+            "is_verified": 0
+        }
+    },
+    "status": "success",
+    "status_code": 200,
+    "message": "successful"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscription/edit/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    name |  optional  | string required id of the Subscription
+
+<!-- END_869edca8f7bb6a33cd642c70e7001d7a -->
+
+<!-- START_ee3a7a511ff9905e32c4602ddf1c7063 -->
+## Deletes Subscription from database
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/subscription/delete/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/delete/{id}");
+
+    let params = {
+            "id": "mUc4n3qmzXWvA6QI",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Subscription Deleted"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not delete Subscription"
+}
+```
+
+### HTTP Request
+`DELETE /api/v1/subscription/delete/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Subscription
+
+<!-- END_ee3a7a511ff9905e32c4602ddf1c7063 -->
+
+<!-- START_4983383e7073719bee5fa94f97b8cbf5 -->
+## Deletes multiple Subscriptions from database
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/subscriptions/delete"     -d "Subscriptions"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscriptions/delete");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Subscriptions": "[]",
+})
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Subscriptions Deleted"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not delete Subscription(s)"
+}
+```
+
+### HTTP Request
+`DELETE /api/v1/subscriptions/delete`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Subscriptions | array |  required  | An array of id's of Subscriptions to be deleted
+
+<!-- END_4983383e7073719bee5fa94f97b8cbf5 -->
+
+<!-- START_38bfd1fdf0f730bae65bebe397c5d62c -->
+## Restore soft deleted Subscription from database
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscription/restore/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/restore/{id}");
+
+    let params = {
+            "id": "Q2Ih3B5UPu3xTllk",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Subscription Restored"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Subscription"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscription/restore/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Subscription
+
+<!-- END_38bfd1fdf0f730bae65bebe397c5d62c -->
+
+<!-- START_153c8993caf413493d00f928ab0bb2d6 -->
+## Restores multiple soft deleted Subscriptions from database
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscriptions/restore"     -d "Subscriptions"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscriptions/restore");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Subscriptions": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Subscriptions restored"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not restore Subscription(s)"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscriptions/restore`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Subscriptions | array |  required  | an array of Id's of Subscriptions to be restored
+
+<!-- END_153c8993caf413493d00f928ab0bb2d6 -->
+
+<!-- START_f21b3d886a4385d0b4d7e1fea5dec725 -->
+## Ractivate Subscription in database
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscription/activate/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/activate/{id}");
+
+    let params = {
+            "id": "395qv2i18NW32n6C",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Subscription activated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate Subscription"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscription/activate/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Subscription
+
+<!-- END_f21b3d886a4385d0b4d7e1fea5dec725 -->
+
+<!-- START_ee4bad1b088832044911e1a351149cd7 -->
+## Ractivate Subscription in database
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscription/deactivate/{id}" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscription/deactivate/{id}");
+
+    let params = {
+            "id": "hUjdA4kuArihwKDO",
+        };
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Subscription deactivated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not deactivate Subscription"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscription/deactivate/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    id |  optional  | string required Id of the Subscription
+
+<!-- END_ee4bad1b088832044911e1a351149cd7 -->
+
+<!-- START_2eecd1df60e4c6bccab4291875178782 -->
+## Activate multiple Subscriptions
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscriptions/activate"     -d "Subscriptions"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscriptions/activate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Subscriptions": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Subscriptions activated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not activate Subscription"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscriptions/activate`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Subscriptions | array |  required  | an array of Id's of Subscriptions to be activated
+
+<!-- END_2eecd1df60e4c6bccab4291875178782 -->
+
+<!-- START_6a989a456db4d01b441e309d15519553 -->
+## Deactivate multiple Subscriptions
+Send as x-www-form-urlencoded
+
+> Example request:
+
+```bash
+curl -X PATCH "http://localhost:8000/api/v1/subscriptions/deactivate"     -d "Subscriptions"="[]" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/subscriptions/deactivate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "Subscriptions": "[]",
+})
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "5 Subscriptions deactivated"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Subscription(s) not found"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Could not deactivate Subscription(s)"
+}
+```
+
+### HTTP Request
+`PATCH /api/v1/subscriptions/deactivate`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    Subscriptions | array |  required  | an array of Id's of Subscriptions to be deactivated
+
+<!-- END_6a989a456db4d01b441e309d15519553 -->
 
 #general
 <!-- START_35a709dd24ddef4c2e871719f80f0c39 -->

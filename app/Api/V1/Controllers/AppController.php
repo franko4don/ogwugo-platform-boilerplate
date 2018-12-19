@@ -99,9 +99,9 @@ class Appcontroller extends Controller
      * Deletes app from database
      * @queryParam id string required Id of the app
      * @group App
-     * @responseFile responses/apps/app.delete.200.json
-     * @responseFile 404 responses/apps/app.404.json
-     * @responseFile 409 responses/apps/app.delete.409.json
+     * @responseFile responses/general/200.json {"message" : "App(s) Deleted"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete App(s)"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -123,8 +123,8 @@ class Appcontroller extends Controller
      * Deletes multiple apps from database
      * Send as x-www-form-urlencoded
      * @group App
-     * @responseFile responses/apps/app.delete.200.json
-     * @responseFile 404 responses/apps/app.404.json
+     * @responseFile responses/general/200.json {"message" : "5 App(s) Deleted"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
      * @bodyParam apps array required An array of id's of apps to be deleted 
      * @param mixed $request
      * @return json
@@ -165,9 +165,9 @@ class Appcontroller extends Controller
      * Restore soft deleted app from database
      * @queryParam id string required Id of the app
      * @group App
-     * @responseFile responses/apps/app.restore.200.json
-     * @responseFile 404 responses/apps/app.404.json
-     * @responseFile 409 responses/apps/app.restore.409.json
+     * @responseFile responses/general/200.json {"message" : "App Restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete App(s)"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -189,8 +189,9 @@ class Appcontroller extends Controller
      * Restores multiple soft deleted apps from database
      * Send as x-www-form-urlencoded
      * @group App
-     * @responseFile responses/apps/app.restore.200.json
-     * @responseFile 404 responses/apps/app.404.json
+     * @responseFile responses/general/200.json {"message" : "5 App Restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not delete App(s)"}
      * @bodyParam apps array required an array of Id's of apps to be deleted 
      * @param mixed $request
      * @return json
@@ -229,9 +230,9 @@ class Appcontroller extends Controller
      * Ractivate app in database
      * @queryParam id string required Id of the app
      * @group App
-     * @responseFile responses/apps/app.restore.200.json
-     * @responseFile 404 responses/apps/app.404.json
-     * @responseFile 409 responses/apps/app.restore.409.json
+     * @responseFile 200 responses/general/200.json {"message" : "App Restored"}
+     * @responseFile 404 responses/general/404.json {"message" : "App not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not reactivate App"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -250,12 +251,12 @@ class Appcontroller extends Controller
     }
 
     /**
-     * Ractivate app in database
+     * Deactivate app in database
      * @queryParam id string required Id of the app
      * @group App
-     * @responseFile responses/apps/app.restore.200.json
-     * @responseFile 404 responses/apps/app.404.json
-     * @responseFile 409 responses/apps/app.restore.409.json
+     * @responseFile 200 responses/general/200.json {"message" : "App deactivated"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not deactivate found"}
      * @param mixed $request
      * @param string $id
      * @return json
@@ -279,8 +280,9 @@ class Appcontroller extends Controller
      * Activate multiple apps
      * Send as x-www-form-urlencoded
      * @group App
-     * @responseFile responses/apps/app.restore.200.json
-     * @responseFile 404 responses/apps/app.404.json
+     * @responseFile 200 responses/general/200.json {"message" : "5 Apps Activated"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not activate App"}
      * @bodyParam apps array required an array of Id's of apps to be activated 
      * @param mixed $request
      * @return json
@@ -322,8 +324,9 @@ class Appcontroller extends Controller
      * Deactivate multiple apps
      * Send as x-www-form-urlencoded
      * @group App
-     * @responseFile responses/apps/app.restore.200.json
-     * @responseFile 404 responses/apps/app.404.json
+     * @responseFile 200 responses/general/200.json {"message" : "5 Apps deactivated"}
+     * @responseFile 404 responses/general/404.json {"message" : "App(s) not found"}
+     * @responseFile 409 responses/general/409.json {"message" : "Could not activate Apps"}
      * @bodyParam apps array required an array of Id's of apps to be deactivated 
      * @param mixed $request
      * @return json
