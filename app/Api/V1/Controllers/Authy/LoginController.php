@@ -9,6 +9,7 @@ use App\Api\V1\Requests\LoginRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use App\Helpers\Helper;
+use App\Helpers\Http;
 use App\Model\V1\OrganizationUser;
 use App\Model\V1\Organization;
 use App\Model\V1\User;
@@ -88,16 +89,24 @@ class LoginController extends Controller
                 if(Hash::check($request->password, $organizationUser->password)){
                     $user = User::find($organizationUser->user_id);
                     
-                    $token = $JWTAuth->customClaims(['user' => $organizationUser->toArray()])->fromUser($user);
+                    $token = $JWTAuth->customClaims(['claims' => $organizationUser->toArray()])->fromUser($user);
                     
                     if(!$token) {
                 
                         throw new AccessDeniedHttpException();
                     }
+
+                    // send details to other apps for authentication
+                    $organization->load('apps');
                     
+                    $apps = $this->authenticateApps($organization, $user, $organizationUser);
+
                     return response()
                         ->json([
-                            'data' => $user,
+                            'data' => [
+                                'user' => $user, 
+                                'apps' => $apps
+                            ],
                             'status' => 'success',
                             'token' => $token,
                             'expires_in' => Auth::guard()->factory()->getTTL() * 60
@@ -119,5 +128,26 @@ class LoginController extends Controller
                 'token' => $token,
                 'expires_in' => Auth::guard()->factory()->getTTL() * 60
             ]);
+    }
+
+    public function authenticateApps($organization, $user, $organizationUser){
+        $apps = [];
+        // goes through all the apps the organization belongs to and authenticates them
+        $organization->apps->each(function($item, $key) use (&$apps, $user, $organizationUser){
+            try{
+                $payload = ['user' => $user, 'claims' => $organizationUser->toArray()];
+                $result = Http::post($item->api_url, ['json' => $payload]);
+
+                if(Http::getStatusCode() == 200){
+                    $item->token = $result['token'];
+                    $item->expires_in = $result['expires_in'];
+                    array_push($apps, $item);
+                }
+            }catch(\Exception $e){
+                
+            }
+            
+        });
+        return $apps;
     }
 }

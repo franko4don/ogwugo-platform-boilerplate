@@ -52,5 +52,12 @@ class App extends Model
         return $this->belongsToMany(Feature::class);
     }
 
+     /**
+     * Establishes relationship between organization and app table
+     */
+    public function organization()
+    {
+        return $this->belongsToMany(Organization::class);
+    }
 
 }

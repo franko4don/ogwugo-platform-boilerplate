@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Api\V1\Requests\OrganizationRequest;
 use App\Api\V1\Requests\OrganizationEditRequest;
+use App\Api\V1\Requests\AppConnectRequest;
 use App\Helpers\Helper;
 use App\Model\V1\Organization;
 use App\Resources\GenericResource;
@@ -24,6 +25,39 @@ class Organizationcontroller extends Controller
         $this->middleware('jwt.auth', []);
     }
 
+
+    /**
+     * Creates or registers and organization
+     * @bodyParam name string required name of the organization
+     * @bodyParam domain_name string required Domain name of the organization
+     * @bodyParam motto string optional motto of the organization
+     * @responseFile responses/organizations/organization.get.json
+     * @group Organization
+     * @param mixed $request
+     * @return json
+     * 
+     */
+    public function connectToApp(AppConnectRequest $request)
+    {   
+        $host = Helper::getRequestHost();
+        $organization = Organization::where('domain_name', $host)->first();
+
+        // checks if organization exists
+        if(!$organization){
+            return $this->notfound('Organization does not exist');
+        }
+
+        // checks if app has already been connected to organization
+        $has_app = $organization->apps()->where('app_id', $request->app_id)->exists();
+        if($has_app){
+            return $this->actionFailure('Organization is already connected to App');
+        }
+
+        // attaches app to organization
+        $assign = $organization->apps()->attach($request->app_id, $request->all());
+
+        return $this->actionSuccess('Organization has been connected to app');
+    }
 
     /**
      * Creates or registers and organization
@@ -59,6 +93,7 @@ class Organizationcontroller extends Controller
     {
         $organization = Organization::find($id);
         if(is_null($organization)) return $this->notfound('organization not found', 'null');
+        
         if($organization->update($request->all())){
             return $this->success($organization);
         }else{

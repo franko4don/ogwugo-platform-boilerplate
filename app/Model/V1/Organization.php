@@ -67,4 +67,13 @@ class Organization extends Model
     {
         return $this->hasMany(OrganizationUser::class);
     }
+
+    /**
+     * Establishes relationship between organization and app table
+     */
+    public function apps()
+    {
+        return $this->belongsToMany(App::class);
+    }
+
 }

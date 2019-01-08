@@ -21,7 +21,7 @@ $api->version('v1', function (Router $api) {
         $api->get('me', 'App\\Api\\V1\\Controllers\\UserController@me');
     });
     
-    $api->group(['prefix' => 'v1'], function(Router $api) {
+    $api->group(['prefix' => 'v1', 'middleware' => ['api']], function(Router $api) {
         $api->get('test', 'App\\Api\\V1\\Controllers\\TestController@nginx');
 
         // app api routes
@@ -51,6 +51,7 @@ $api->version('v1', function (Router $api) {
         $api->patch('organization/deactivate/{id}', 'App\\Api\\V1\\Controllers\\OrganizationController@deactivate');
         $api->patch('organizations/activate', 'App\\Api\\V1\\Controllers\\OrganizationController@batchActivate');
         $api->patch('organizations/deactivate', 'App\\Api\\V1\\Controllers\\OrganizationController@batchDeactivate');
+        $api->post('organization/app/connect', 'App\\Api\\V1\\Controllers\\OrganizationController@connectToApp');
         
 
         // feature api routes
@@ -82,9 +83,8 @@ $api->version('v1', function (Router $api) {
         $api->patch('subscriptions/activate', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchActivate');
         $api->patch('subscriptions/deactivate', 'App\\Api\\V1\\Controllers\\SubscriptionController@batchDeactivate');
         
-
-        // user organization
-        // $api->post('user/organization/register', 'App\\Api\\V1\\Controllers\\OrganizationUserController@register');
+        $api->post('role/create', 'App\\Api\\V1\\Controllers\\RoleController@create');
+        $api->post('role/assign', 'App\\Api\\V1\\Controllers\\RoleController@assignRole');
         
 
 

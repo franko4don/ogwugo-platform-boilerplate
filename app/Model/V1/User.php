@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Helpers\Helper;
 use Ramsey\Uuid\Uuid;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable,HasRolesAndAbilities;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,11 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'firstname', 'email', 'password', 'lastname', 'phone'
+    ];
+
+    protected $casts = [
+        'id' => 'string',
+        'is_active' => 'boolean'
     ];
 
     /**

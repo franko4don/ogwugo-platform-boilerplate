@@ -9,9 +9,21 @@ use App\Api\V1\Requests\AppEditRequest;
 use App\Helpers\Helper;
 use App\Model\V1\App;
 use App\Resources\GenericResource;
+use Bouncer;
 
 class Appcontroller extends Controller
 {
+
+    /**
+     * Create a new AppController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt.auth', []);
+        
+    }
     
     /**
      * Creates or registers and app or microservice
@@ -46,6 +58,8 @@ class Appcontroller extends Controller
      */
     public function edit(AppEditRequest $request, $id)
     {
+        $can = Bouncer::can('edit', App::class); 
+        if(!$can) return $this->unauthorized('You cannot edit this record');
         $app = App::find($id);
         if(is_null($app)) return $this->notfound('App not found', 'null');
         if($app->update($request->all())){
