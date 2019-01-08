@@ -6,11 +6,12 @@ use Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-
+    use HasRolesAndAbilities;
     /**
      * The attributes that are mass assignable.
      *
