@@ -4,14 +4,12 @@ namespace App\Model\V1;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuid;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Feature extends Model
 {
     use Uuid;
-    use SoftDeletes;
-
+    
     protected $fillable = ['name', 'app_id', 'is_active', 'updated_by', 'created_by', 'description'];
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -33,4 +31,8 @@ class Feature extends Model
         'id' => 'string',
         'is_active' => 'boolean'
     ];
+
+    public function subscriptions(){
+        return $this->belongsToMany(Subscription::class);
+    }
 }

@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use App\Api\V1\Requests\FeatureRequest;
+use App\Api\V1\Requests\FeatureSubscriptionRequest;
 use App\Model\V1\Feature;
+use App\Model\V1\Subscription;
 use App\Resources\GenericResource;
 use Auth;
-
 class Featurecontroller extends Controller
 {
    
@@ -24,6 +25,84 @@ class Featurecontroller extends Controller
         
     }
 
+    /**
+     * Removes feature from subscription
+     * @bodyParam custom_domain string required domain name for the service
+     * @responseFile responses/general/200.json {"message" : "Organization Connected to app"}
+     * @responseFile 409 responses/general/409.json {"message" : "Organization already Connected to app"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization does not exist"}
+     * @group Feature
+     * @param mixed $request
+     * @return json
+     * 
+     */
+    public function removeFeatureToSubscription(FeatureSubscriptionRequest $request)
+    {   
+        
+        $subscription = Subscription::find($request->subscription_id);
+        $feature = Feature::find($request->feature_id);
+        // checks if organization exists
+        if(!$subscription){
+            return $this->notfound('Subscription does not exist');
+        }
+
+        // checks if feature exists
+        if(!$feature){
+            return $this->notfound('Feature does not exist');
+        }
+
+        // checks if feature has already been connected to subscription
+        $has_subscription = $feature->subscriptions()->where('subscription_id', $request->subscription_id)->exists();
+
+        if(!$has_subscription){
+            return $this->actionFailure('Subscription does not have this feature');
+        }
+
+        // attaches app to organization
+        $assign = $feature->subscriptions()->detach($request->subscription_id);
+
+        return $this->actionSuccess('Feature has been removed from subscription');
+    }
+
+
+    /**
+     * Adds Feature to subscription
+     * @bodyParam subscription_id string required subscription id for the subscription
+     * @bodyParam feature_id string required feature id for the feature
+     * @responseFile responses/general/200.json {"message" : "Feature added to Subscription"}
+     * @responseFile 409 responses/general/409.json {"message" : "Feature does not exists "}
+     * @responseFile 404 responses/general/404.json {"message" : "Feature does not exist"}
+     * @group Feature
+     * @param mixed $request
+     * @return json
+     * 
+     */
+    public function addFeatureToSubscription(FeatureSubscriptionRequest $request)
+    {   
+        
+        $subscription = Subscription::find($request->subscription_id);
+        $feature = Feature::find($request->feature_id);
+        // checks if subscription exists
+        if(!$subscription){
+            return $this->notfound('Subscription does not exist');
+        }
+
+        if(!$feature){
+            return $this->notfound('Feature does not exist');
+        }
+
+        // checks if feature has already been connected to subscription
+        $has_subscription = $feature->subscriptions()->where('subscription_id', $request->subscription_id)->exists();
+
+        if($has_subscription){
+            return $this->actionFailure('Subscription already has this feature');
+        }
+
+        // attaches app to organization
+        $assign = $feature->subscriptions()->attach($request->subscription_id);
+
+        return $this->actionSuccess('Feature has been added to feature');
+    }
 
     /**
      * Creates or registers Feature

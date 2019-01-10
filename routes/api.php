@@ -52,6 +52,7 @@ $api->version('v1', function (Router $api) {
         $api->patch('organizations/activate', 'App\\Api\\V1\\Controllers\\OrganizationController@batchActivate');
         $api->patch('organizations/deactivate', 'App\\Api\\V1\\Controllers\\OrganizationController@batchDeactivate');
         $api->post('organization/app/connect', 'App\\Api\\V1\\Controllers\\OrganizationController@connectToApp');
+        $api->post('organization/app/disconnect', 'App\\Api\\V1\\Controllers\\OrganizationController@disconnectToApp');
         
 
         // feature api routes
@@ -67,6 +68,8 @@ $api->version('v1', function (Router $api) {
         $api->patch('feature/deactivate/{id}', 'App\\Api\\V1\\Controllers\\FeatureController@deactivate');
         $api->patch('features/activate', 'App\\Api\\V1\\Controllers\\FeatureController@batchActivate');
         $api->patch('features/deactivate', 'App\\Api\\V1\\Controllers\\FeatureController@batchDeactivate');
+        $api->post('feature/subscription/add', 'App\\Api\\V1\\Controllers\\FeatureController@addFeatureToSubscription');
+        $api->post('feature/subscription/delete', 'App\\Api\\V1\\Controllers\\FeatureController@removeFeatureToSubscription');
         
 
         // subscription api routes

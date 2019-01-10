@@ -107,7 +107,7 @@ curl -X GET -G "http://localhost:8000/api/v1/app/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/{id}");
 
     let params = {
-            "id": "gmHkqFQXrwbblCdY",
+            "id": "enlZTomhy9MtquEz",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -160,11 +160,11 @@ Parameter | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/app/create"     -d "name"="ISe6ULHa26lKcpqn" \
-    -d "api_url"="ZvVibgoPqdW9TUEK" \
-    -d "app_domain"="NHZgaPFq26rbsJSR" \
-    -d "secret"="hGAYf85UYIHnchis" \
-    -d "test_secret"="R18qtfM8mtQbeY6J" 
+curl -X POST "http://localhost:8000/api/v1/app/create"     -d "name"="o3kqGEKWf9JWtDqz" \
+    -d "api_url"="SDVAB4byyGRGPRvT" \
+    -d "app_domain"="iM8zNzJmbZUsLoVj" \
+    -d "secret"="ra5cxeUJHFoM3a7E" \
+    -d "test_secret"="22NK783xX3AVYp7N" 
 ```
 
 ```javascript
@@ -176,11 +176,11 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "name": "ISe6ULHa26lKcpqn",
-    "api_url": "ZvVibgoPqdW9TUEK",
-    "app_domain": "NHZgaPFq26rbsJSR",
-    "secret": "hGAYf85UYIHnchis",
-    "test_secret": "R18qtfM8mtQbeY6J",
+    "name": "o3kqGEKWf9JWtDqz",
+    "api_url": "SDVAB4byyGRGPRvT",
+    "app_domain": "iM8zNzJmbZUsLoVj",
+    "secret": "ra5cxeUJHFoM3a7E",
+    "test_secret": "22NK783xX3AVYp7N",
 })
 
 fetch(url, {
@@ -240,7 +240,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/edit/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/edit/{id}");
 
     let params = {
-            "name": "oPGVct9w5Xfsih4G",
+            "name": "GEC5MGN7WcUaaqHM",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -300,7 +300,7 @@ curl -X DELETE "http://localhost:8000/api/v1/app/delete/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/delete/{id}");
 
     let params = {
-            "id": "n8CrqRoL9IwbA8Il",
+            "id": "AE6VKABOP7yWxp75",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -430,7 +430,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/restore/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/restore/{id}");
 
     let params = {
-            "id": "6cJekqxJvQDMFlFy",
+            "id": "846kTWzT7kmKlUFS",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -569,7 +569,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/activate/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/activate/{id}");
 
     let params = {
-            "id": "arHkjNAsdG8ZGEB0",
+            "id": "KTTqizwnocQSF2bz",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -638,7 +638,7 @@ curl -X PATCH "http://localhost:8000/api/v1/app/deactivate/{id}"
 const url = new URL("http://localhost:8000/api/v1/app/deactivate/{id}");
 
     let params = {
-            "id": "WLwTdkmnBU3VZeEg",
+            "id": "bnNyivJmnt5lV5G8",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -841,10 +841,10 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/auth/signup"     -d "firstname"="koY1l25RXtVriWRV" \
-    -d "lastname"="c4ExjbYWCk1ot3hf" \
-    -d "email"="KJ42V1JVvAUZXmyc" \
-    -d "password"="awaJK9Qc80z0ZSdk" 
+curl -X POST "http://localhost:8000/api/v1/auth/signup"     -d "firstname"="yKU8Veoi6t8hCsWT" \
+    -d "lastname"="5Z2rq08WdSVfplN7" \
+    -d "email"="5oHwptWQSLPPnKkS" \
+    -d "password"="4IAjJlzb3CYLdJH3" 
 ```
 
 ```javascript
@@ -856,10 +856,10 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "firstname": "koY1l25RXtVriWRV",
-    "lastname": "c4ExjbYWCk1ot3hf",
-    "email": "KJ42V1JVvAUZXmyc",
-    "password": "awaJK9Qc80z0ZSdk",
+    "firstname": "yKU8Veoi6t8hCsWT",
+    "lastname": "5Z2rq08WdSVfplN7",
+    "email": "5oHwptWQSLPPnKkS",
+    "password": "4IAjJlzb3CYLdJH3",
 })
 
 fetch(url, {
@@ -901,10 +901,10 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/auth/signup/from-organization"     -d "firstname"="Y6GaBjlxjNa7lzzd" \
-    -d "lastname"="WsPWqYvI8NalDiZF" \
-    -d "email"="s0GKn3NeSRYx6yeL" \
-    -d "password"="qQxkRuN6tYWnqrkD" 
+curl -X POST "http://localhost:8000/api/v1/auth/signup/from-organization"     -d "firstname"="DNm5EdU5HWoyLIEB" \
+    -d "lastname"="p6ZrwrHXp6dyih7O" \
+    -d "email"="7ui6wgG5ibrKiws4" \
+    -d "password"="bUXTNmEHiQOmesSy" 
 ```
 
 ```javascript
@@ -916,10 +916,10 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "firstname": "Y6GaBjlxjNa7lzzd",
-    "lastname": "WsPWqYvI8NalDiZF",
-    "email": "s0GKn3NeSRYx6yeL",
-    "password": "qQxkRuN6tYWnqrkD",
+    "firstname": "DNm5EdU5HWoyLIEB",
+    "lastname": "p6ZrwrHXp6dyih7O",
+    "email": "7ui6wgG5ibrKiws4",
+    "password": "bUXTNmEHiQOmesSy",
 })
 
 fetch(url, {
@@ -961,8 +961,8 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/auth/login"     -d "email"="yPXgr6MAKbopp0Pc" \
-    -d "password"="nJC0TNgNi6lZ3KUT" 
+curl -X POST "http://localhost:8000/api/v1/auth/login"     -d "email"="1eQ2L914IBlMDm5R" \
+    -d "password"="VwwvnmSVWI0sUAuj" 
 ```
 
 ```javascript
@@ -974,8 +974,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "email": "yPXgr6MAKbopp0Pc",
-    "password": "nJC0TNgNi6lZ3KUT",
+    "email": "1eQ2L914IBlMDm5R",
+    "password": "VwwvnmSVWI0sUAuj",
 })
 
 fetch(url, {
@@ -1015,8 +1015,8 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/auth/login/from-organization"     -d "email"="keauEr9mOye9efvn" \
-    -d "password"="wSnm40vcuYG5XM42" 
+curl -X POST "http://localhost:8000/api/v1/auth/login/from-organization"     -d "email"="nao2bOalnR1bbOpY" \
+    -d "password"="23exse2pkHFYKB2S" 
 ```
 
 ```javascript
@@ -1028,8 +1028,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "email": "keauEr9mOye9efvn",
-    "password": "wSnm40vcuYG5XM42",
+    "email": "nao2bOalnR1bbOpY",
+    "password": "23exse2pkHFYKB2S",
 })
 
 fetch(url, {
@@ -1278,7 +1278,7 @@ curl -X GET -G "http://localhost:8000/api/v1/feature/{id}"
 const url = new URL("http://localhost:8000/api/v1/feature/{id}");
 
     let params = {
-            "id": "sM63X4zeXtnNv0zw",
+            "id": "6C7zZRiUDqTOvGtS",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1340,8 +1340,8 @@ Parameter | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/feature/create"     -d "name"="VfCvXYaSAAf3tcEq" \
-    -d "description"="WVkuvwDxgnDZtm15" 
+curl -X POST "http://localhost:8000/api/v1/feature/create"     -d "name"="L60VO1pKKuLpMAxV" \
+    -d "description"="s6PN6caF5t7gTLqe" 
 ```
 
 ```javascript
@@ -1353,8 +1353,8 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "name": "VfCvXYaSAAf3tcEq",
-    "description": "WVkuvwDxgnDZtm15",
+    "name": "L60VO1pKKuLpMAxV",
+    "description": "s6PN6caF5t7gTLqe",
 })
 
 fetch(url, {
@@ -1420,7 +1420,7 @@ curl -X PATCH "http://localhost:8000/api/v1/feature/edit/{id}"
 const url = new URL("http://localhost:8000/api/v1/feature/edit/{id}");
 
     let params = {
-            "name": "qGHUqxeDffEMOPI9",
+            "name": "QBsYMWff1XESzUrj",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1489,7 +1489,7 @@ curl -X DELETE "http://localhost:8000/api/v1/feature/delete/{id}"
 const url = new URL("http://localhost:8000/api/v1/feature/delete/{id}");
 
     let params = {
-            "id": "8wghrMOwS5pickqT",
+            "id": "VtbKHWSc74qFkDpM",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1628,7 +1628,7 @@ curl -X PATCH "http://localhost:8000/api/v1/feature/restore/{id}"
 const url = new URL("http://localhost:8000/api/v1/feature/restore/{id}");
 
     let params = {
-            "id": "TMJTbv124z2xf4bc",
+            "id": "1BESCxLJ9mG7Nw84",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1767,7 +1767,7 @@ curl -X PATCH "http://localhost:8000/api/v1/feature/activate/{id}"
 const url = new URL("http://localhost:8000/api/v1/feature/activate/{id}");
 
     let params = {
-            "id": "ya02lN1JXwdgala3",
+            "id": "G6bDgQIixayV9vFm",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1836,7 +1836,7 @@ curl -X PATCH "http://localhost:8000/api/v1/feature/deactivate/{id}"
 const url = new URL("http://localhost:8000/api/v1/feature/deactivate/{id}");
 
     let params = {
-            "id": "ST1rxUdMi1mfQwMV",
+            "id": "qzkwgFVaj3to1PSi",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2110,7 +2110,7 @@ curl -X GET -G "http://localhost:8000/api/v1/organization/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/{id}");
 
     let params = {
-            "id": "0p9yBWAOlOvLqsfJ",
+            "id": "iahICXwS86XGUxeX",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2172,9 +2172,9 @@ Parameter | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/organization/create"     -d "name"="6L19JWcChAdJJQ9M" \
-    -d "domain_name"="HRozVPhHKuAbnm2R" \
-    -d "motto"="CaOoaef57yYrkFVr" 
+curl -X POST "http://localhost:8000/api/v1/organization/create"     -d "name"="WEvk2MsoYCjGpiEE" \
+    -d "domain_name"="6hRKd9mNGnasnd1N" \
+    -d "motto"="N5dKRLz2MUglZ8sY" 
 ```
 
 ```javascript
@@ -2186,9 +2186,9 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "name": "6L19JWcChAdJJQ9M",
-    "domain_name": "HRozVPhHKuAbnm2R",
-    "motto": "CaOoaef57yYrkFVr",
+    "name": "WEvk2MsoYCjGpiEE",
+    "domain_name": "6hRKd9mNGnasnd1N",
+    "motto": "N5dKRLz2MUglZ8sY",
 })
 
 fetch(url, {
@@ -2255,7 +2255,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/edit/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/edit/{id}");
 
     let params = {
-            "name": "xIMvYFRF041aPCqk",
+            "name": "z1nwDiycCyikazAZ",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2324,7 +2324,7 @@ curl -X DELETE "http://localhost:8000/api/v1/organization/delete/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/delete/{id}");
 
     let params = {
-            "id": "KeKgKHVoJmDkZ4Ib",
+            "id": "tfBvlsbOqn0JYlu0",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2463,7 +2463,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/restore/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/restore/{id}");
 
     let params = {
-            "id": "kqNAjlPp0CFmG6fZ",
+            "id": "y2BExatNh5WmVXD9",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2602,7 +2602,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/activate/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/activate/{id}");
 
     let params = {
-            "id": "5A0h4vNQs7BBmrQ5",
+            "id": "L3PD3tUph95UG0iu",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2671,7 +2671,7 @@ curl -X PATCH "http://localhost:8000/api/v1/organization/deactivate/{id}"
 const url = new URL("http://localhost:8000/api/v1/organization/deactivate/{id}");
 
     let params = {
-            "id": "gQg6tnWsNhxNraKV",
+            "id": "A91sWaqrB2aJY7tW",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2867,6 +2867,187 @@ Parameter | Type | Status | Description
 
 <!-- END_4e7179b885297209c8d45939d13ee068 -->
 
+<!-- START_557df1ea2a4b92405816e8e51f7d91f4 -->
+## Connects organization to an app
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/organization/app/connect"     -d "custom_domain"="MFYNSYrB6ZgZq1d9" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/organization/app/connect");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "custom_domain": "MFYNSYrB6ZgZq1d9",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Organization Connected to app"
+}
+```
+> Example response (409):
+
+```json
+{
+    "status": "failed",
+    "status_code": 409,
+    "message": "Organization already Connected to app"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "failed",
+    "status_code": 404,
+    "message": "Organization does not exist"
+}
+```
+
+### HTTP Request
+`POST /api/v1/organization/app/connect`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    custom_domain | string |  required  | domain name for the service
+
+<!-- END_557df1ea2a4b92405816e8e51f7d91f4 -->
+
+#Role
+<!-- START_804c96cf3405d5dd386de7d532312967 -->
+## Creates role
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/role/create"     -d "name"="wH1bKtf5Pe9LsbVu" \
+    -d "title"="5JZMPCQyndhtFJ4J" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/role/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "name": "wH1bKtf5Pe9LsbVu",
+    "title": "5JZMPCQyndhtFJ4J",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Role created"
+}
+```
+
+### HTTP Request
+`POST /api/v1/role/create`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | name of the role
+    title | string |  required  | title of the role
+
+<!-- END_804c96cf3405d5dd386de7d532312967 -->
+
+<!-- START_9ef345f421bf197407c8e6f994204d83 -->
+## Assign role to user
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/role/assign"     -d "user_id"="y1IFpOypCViyebPr" \
+    -d "permission"="srCxoL8rmmOulFjs" \
+    -d "model"="0BwFE7VEarSXoB0t" 
+```
+
+```javascript
+const url = new URL("http://localhost:8000/api/v1/role/assign");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+let body = JSON.stringify({
+    "user_id": "y1IFpOypCViyebPr",
+    "permission": "srCxoL8rmmOulFjs",
+    "model": "0BwFE7VEarSXoB0t",
+})
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "Edit Permission has been granted to user"
+}
+```
+
+### HTTP Request
+`POST /api/v1/role/assign`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    user_id | string |  required  | uuid of the user to be assigned a role
+    permission | string |  required  | name of the permission to be assigned
+    model | string |  required  | model name the user will be granted permission to
+
+<!-- END_9ef345f421bf197407c8e6f994204d83 -->
+
 #Subscription
 <!-- START_8b2d5f0620d38573ccce051974a129c2 -->
 ## Get all Subscriptions
@@ -2945,7 +3126,7 @@ curl -X GET -G "http://localhost:8000/api/v1/subscription/{id}"
 const url = new URL("http://localhost:8000/api/v1/subscription/{id}");
 
     let params = {
-            "id": "YrhSMeLjavmdIuPQ",
+            "id": "YdqIzBUjOSRHelRY",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -3007,9 +3188,9 @@ Parameter | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://localhost:8000/api/v1/subscription/create"     -d "name"="CiYdQtk1p5lSyCue" \
-    -d "domain_name"="ZjNF8t7B5ACacDq4" \
-    -d "motto"="SEBdSTE6U3KIASLT" 
+curl -X POST "http://localhost:8000/api/v1/subscription/create"     -d "name"="437Vc6jJ3NdNV5Bv" \
+    -d "domain_name"="PFjI23eb2bqPThdp" \
+    -d "motto"="jF54bHtlnbEqEcUp" 
 ```
 
 ```javascript
@@ -3021,9 +3202,9 @@ let headers = {
 }
 
 let body = JSON.stringify({
-    "name": "CiYdQtk1p5lSyCue",
-    "domain_name": "ZjNF8t7B5ACacDq4",
-    "motto": "SEBdSTE6U3KIASLT",
+    "name": "437Vc6jJ3NdNV5Bv",
+    "domain_name": "PFjI23eb2bqPThdp",
+    "motto": "jF54bHtlnbEqEcUp",
 })
 
 fetch(url, {
@@ -3090,7 +3271,7 @@ curl -X PATCH "http://localhost:8000/api/v1/subscription/edit/{id}"
 const url = new URL("http://localhost:8000/api/v1/subscription/edit/{id}");
 
     let params = {
-            "name": "yzpapvcsOPcVzK9V",
+            "name": "f4M3rqKwkuFUzSyn",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -3159,7 +3340,7 @@ curl -X DELETE "http://localhost:8000/api/v1/subscription/delete/{id}"
 const url = new URL("http://localhost:8000/api/v1/subscription/delete/{id}");
 
     let params = {
-            "id": "mUc4n3qmzXWvA6QI",
+            "id": "qC71tfglTPb1TZWL",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -3298,7 +3479,7 @@ curl -X PATCH "http://localhost:8000/api/v1/subscription/restore/{id}"
 const url = new URL("http://localhost:8000/api/v1/subscription/restore/{id}");
 
     let params = {
-            "id": "Q2Ih3B5UPu3xTllk",
+            "id": "Ggb2geTzGitygUCU",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -3437,7 +3618,7 @@ curl -X PATCH "http://localhost:8000/api/v1/subscription/activate/{id}"
 const url = new URL("http://localhost:8000/api/v1/subscription/activate/{id}");
 
     let params = {
-            "id": "395qv2i18NW32n6C",
+            "id": "6V4lZEWCFpt2CIkd",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -3506,7 +3687,7 @@ curl -X PATCH "http://localhost:8000/api/v1/subscription/deactivate/{id}"
 const url = new URL("http://localhost:8000/api/v1/subscription/deactivate/{id}");
 
     let params = {
-            "id": "hUjdA4kuArihwKDO",
+            "id": "7t4u5WpWreia2Ad1",
         };
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 

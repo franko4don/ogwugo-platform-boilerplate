@@ -58,8 +58,8 @@ class Appcontroller extends Controller
      */
     public function edit(AppEditRequest $request, $id)
     {
-        $can = Bouncer::can('edit', App::class); 
-        if(!$can) return $this->unauthorized('You cannot edit this record');
+        // $can = Bouncer::can('edit', App::class); 
+        // if(!$can) return $this->unauthorized('You cannot edit this record');
         $app = App::find($id);
         if(is_null($app)) return $this->notfound('App not found', 'null');
         if($app->update($request->all())){

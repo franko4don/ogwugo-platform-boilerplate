@@ -34,7 +34,13 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request, JWTAuth $JWTAuth)
     {
-        
+        // $apikey = '1Ue8ubx5P3yPpxEa63RHGYTwKCc=';
+        // $filename = 'something.jpg';
+        // $timestamp = time();
+        // $key = 'i+JScbaNLw1plYprwWa35+uZEiA=';
+        // $sign = "apiKey=$apikey&filename=$filename&timestamp=$timestamp";
+        // dd(hash_hmac ('sha1', $sign, $key), $timestamp);
+
         $credentials = $request->only(['email', 'password']);
         
         try {
@@ -130,7 +136,7 @@ class LoginController extends Controller
             ]);
     }
 
-    public function authenticateApps($organization, $user, $organizationUser){
+    private function authenticateApps($organization, $user, $organizationUser){
         $apps = [];
         // goes through all the apps the organization belongs to and authenticates them
         $organization->apps->each(function($item, $key) use (&$apps, $user, $organizationUser){

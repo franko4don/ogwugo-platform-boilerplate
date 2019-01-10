@@ -20,7 +20,6 @@ class CreateBouncerTables extends Migration
             $table->string('name');
             $table->string('title')->nullable();
             $table->uuid('entity_id')->nullable();
-            $table->uuid('organization_id')->nullable();
             $table->string('entity_type')->nullable();
             $table->boolean('only_owned')->default(false);
             $table->json('options')->nullable();
@@ -63,7 +62,6 @@ class CreateBouncerTables extends Migration
         Schema::create(Models::table('permissions'), function (Blueprint $table) {
             $table->integer('ability_id')->unsigned()->index();
             $table->uuid('entity_id');
-            $table->uuid('organization_id');
             $table->string('entity_type');
             $table->boolean('forbidden')->default(false);
             $table->uuid('scope')->nullable()->index();

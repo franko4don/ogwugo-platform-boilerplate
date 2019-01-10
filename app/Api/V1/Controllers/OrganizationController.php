@@ -9,6 +9,7 @@ use App\Api\V1\Requests\OrganizationEditRequest;
 use App\Api\V1\Requests\AppConnectRequest;
 use App\Helpers\Helper;
 use App\Model\V1\Organization;
+use App\Model\V1\App;
 use App\Resources\GenericResource;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Auth;
@@ -27,11 +28,12 @@ class Organizationcontroller extends Controller
 
 
     /**
-     * Creates or registers and organization
-     * @bodyParam name string required name of the organization
-     * @bodyParam domain_name string required Domain name of the organization
-     * @bodyParam motto string optional motto of the organization
-     * @responseFile responses/organizations/organization.get.json
+     * Connects organization to an app
+     * @bodyParam custom_domain string required domain name for the service
+     * @bodyParam app_id string required app id for the service
+     * @responseFile responses/general/200.json {"message" : "Organization Connected to app"}
+     * @responseFile 409 responses/general/409.json {"message" : "Organization already Connected to app"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization does not exist"}
      * @group Organization
      * @param mixed $request
      * @return json
@@ -57,6 +59,43 @@ class Organizationcontroller extends Controller
         $assign = $organization->apps()->attach($request->app_id, $request->all());
 
         return $this->actionSuccess('Organization has been connected to app');
+    }
+
+    /**
+     * Disconnects organization to an app
+     * @bodyParam app_id string required app id for the service
+     * @responseFile responses/general/200.json {"message" : "Organization disconnected from app"}
+     * @responseFile 409 responses/general/409.json {"message" : "Organization is not Connected to app"}
+     * @responseFile 404 responses/general/404.json {"message" : "Organization does not exist"}
+     * @group Organization
+     * @param mixed $request
+     * @return json
+     * 
+     */
+    public function disconnectToApp(Request $request)
+    {   
+        $host = Helper::getRequestHost();
+        $organization = Organization::where('domain_name', $host)->first();
+
+        // checks if organization exists
+        if(!$organization){
+            return $this->notfound('Organization does not exist');
+        }
+
+        if(!App::find($request->app_id)){
+            return $this->notfound('App does not exist');
+        }
+
+        // checks if app has already been connected to organization
+        $has_app = $organization->apps()->where('app_id', $request->app_id)->exists();
+        if(!$has_app){
+            return $this->actionFailure('Organization is not connected to App');
+        }
+
+        // attaches app to organization
+        $assign = $organization->apps()->detach($request->app_id);
+
+        return $this->actionSuccess('Organization has been disconnected from app');
     }
 
     /**
