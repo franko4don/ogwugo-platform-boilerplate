@@ -65,6 +65,7 @@ class CreateBouncerTables extends Migration
             $table->string('entity_type');
             $table->boolean('forbidden')->default(false);
             $table->uuid('scope')->nullable()->index();
+            $table->uuid('organization_id');
 
             $table->index(
                 ['entity_id', 'entity_type', 'scope', 'organization_id'],
